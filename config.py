@@ -17,7 +17,7 @@ input_size_dict = {"inception":299, "resnet18":224, "resnet34":224, "resnet50":2
 batch_size_dict = {"inception":32, "resnet18":64, "resnet34":64, "resnet50":64, "resnet101":32, "resnet152":32,
                    "squeezenet":128, "LeNet": 128, "mobilenet":64, "shufflenet": 128}
 
-epochs_dict = {"inception":20, "resnet18":20, "resnet34":20, "resnet50":20, "resnet101":20, "resnet152":20,
+epochs_dict = {"inception":20, "resnet18":10, "resnet34":20, "resnet50":20, "resnet101":20, "resnet152":20,
                    "squeezenet":20, "LeNet": 20, "mobilenet":20, "shufflenet": 20}
 
 
