@@ -2,7 +2,7 @@ from src.tester import ModelInference
 import os
 import cv2
 
-num_classes = 2
+num_classes = 1000
 
 
 class Tester:
@@ -31,6 +31,8 @@ class Tester:
             name = "LeNet"
         elif "_squeezenet" in model_path:
             name = "squeezenet"
+        elif "mnasnet" in model_path:
+            name = "mnasnet"
         else:
             raise ValueError("Wrong name of pre-train model")
         return name
@@ -43,8 +45,8 @@ class Tester:
 
 
 if __name__ == '__main__':
-    model_pth = "test/test_push_up/push_up_resnet18_2020-03-10-16-09-36.pth"
-    img_path = "test/test_push_up/push_up2_50.jpg"
+    model_pth = "models/pre_train_model/mnasnet.pth"
+    img_path = "tmp/cat.jpeg"
     MI = Tester(model_pth)
     max_idx = MI.test_img(cv2.imread(img_path))
     print(max_idx)

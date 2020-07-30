@@ -67,7 +67,6 @@ class SportModel(object):
         model_path = os.path.join("models/pre_train_model/%s.pth" % model_name)
         if model_name == "inception":
             self.model = models.inception_v3()
-            self.model.load_state_dict(torch.load(model_path))
             self.set_parameter_requires_grad(self.model, feature_extract)
             # Handle the auxilary net
             num_ftrs = self.model.AuxLogits.fc.in_features
@@ -131,6 +130,12 @@ class SportModel(object):
                 nn.ReLU(inplace=True),
                 nn.AdaptiveAvgPool2d((1, 1))
             )
+        elif model_name == "mnasnet":
+            self.model = models.mnasnet1_0()
+            self.model.load_state_dict(torch.load(model_path, map_location=device))
+            self.set_parameter_requires_grad(self.model, feature_extract)
+            self.classifier = nn.Sequential(nn.Dropout(p=0.2, inplace=True),
+                                            nn.Linear(1280, num_classes))
         else:
             raise ValueError("Your pretrain model name is wrong!")
 
