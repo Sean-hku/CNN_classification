@@ -4,15 +4,16 @@ from __future__ import division
 import torch
 import time
 import copy
-from src.config import device, img_label_dict
+from src.config import device, datasets
 import codecs
 from tensorboardX import SummaryWriter
 import numpy as np
 import cv2
 from utils import image2tensorboard
+from src.opt import opt
 
 record_num = 3
-label_dict = {v: k for k, v in img_label_dict.items()}
+label_dict = datasets[opt.dataset]
 
 
 def train_model(model, dataloaders, criterion, optimizer, num_epochs=25, is_inception=False,
@@ -97,7 +98,6 @@ def train_model(model, dataloaders, criterion, optimizer, num_epochs=25, is_ince
                 writer.add_scalar("scalar/val_acc", epoch_acc, epoch)
                 writer.add_scalar("Scalar/val_loss", epoch_loss, epoch)
                 imgnames, pds = names[:3], [label_dict[i] for i in preds[:record_num].tolist()]
-                # images = torch.ones([1, 3, 224, 224])
                 for idx, (img_path, pd) in enumerate(zip(imgnames, pds)):
                     img = cv2.imread(img_path)
                     img = cv2.putText(img, pd,(20, 50),cv2.FONT_HERSHEY_PLAIN, 2, (0,255,0), 2)

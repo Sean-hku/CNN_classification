@@ -21,7 +21,8 @@ data_dir = os.path.join("data", data_name)
 backbone = opt.backbone
 batch_size = opt.batch
 
-model_save_path = os.path.join("exp/saved")
+modelID = opt.expID
+model_save_path = os.path.join("exp/saved/{}".format(modelID))
 
 if __name__ == "__main__":
     os.makedirs(model_save_path, exist_ok=True)
@@ -58,7 +59,7 @@ if __name__ == "__main__":
 
     is_inception = backbone == "inception"
     silent_detect_model, hist = train_model(model, data_loader.dataloaders_dict, criterion, optimizer_ft,
-                                            num_epochs=num_epochs, is_inception=is_inception, model_save_path=
+                                            num_epochs=opt.epoch, is_inception=is_inception, model_save_path=
                                             os.path.join(model_save_path, model_str), log_save_path=log_save_path)
 
     # save model

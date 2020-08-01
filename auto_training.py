@@ -54,29 +54,3 @@ if __name__ == "__main__":
     AT = AutoTrainer()
     AT.auto_train()
 
-#     cnt = 0
-#     total_num = len(epoch_ls) * len(pre_train_ls) * len(val_ratio_ls) * len(learning_rate_ls)
-#     os.makedirs(model_save_folder, exist_ok=True)
-#     os.makedirs(log_save_folder, exist_ok=True)
-#
-#     with open(os.path.join("models/auto_train_saved/", folder_name, "result.csv"), "w") as f:
-#         f.write("model_name,pretrain_model,epoch,val ratio,learning-rate\n")
-#
-#     for val in val_ratio_ls:
-#         for cls in label_dict.keys():
-#             IA = adjust_val.ImgAdjuster(val, data_type, cls)
-#             IA.run()
-#         for pre_model in pre_train_ls:
-#             for epoch in epoch_ls:
-#                 for learning_rate in learning_rate_ls:
-#                     cnt += 1
-#                     print("\n\nBeginning to train: {}/{}".format(cnt, total_num))
-#                     print("The validation ratio is {}".format(val))
-#                     print("It will train {} epochs".format(epoch))
-#                     print("The pre_train model is {}".format(pre_model))
-#                     AutoTrain = AutoTrainer(pre_model, epoch, learning_rate)
-#                     # try:
-#                     AutoTrain.auto_train()
-#                     AutoTrain.record()
-#                     # except:
-#                     #     AutoTrain.failed_record()
