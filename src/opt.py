@@ -5,7 +5,7 @@
 
 import argparse
 
-parser = argparse.ArgumentParser(description='PyTorch AlphaPose Training')
+parser = argparse.ArgumentParser(description='PyTorch CNN Training')
 
 "----------------------------- General options -----------------------------"
 parser.add_argument('--expID', default='default', type=str,
@@ -51,10 +51,8 @@ parser.add_argument('--epoch', default=0, type=int,
                     help='Current epoch')
 parser.add_argument('--val_ratio', default=0.2, type=int,
                     help='Current epoch')
-parser.add_argument('--trainBatch', default=12, type=int,
+parser.add_argument('--batch', default=12, type=int,
                     help='Train-batch size')
-parser.add_argument('--validBatch', default=12, type=int,
-                    help='Valid-batch size')
 parser.add_argument('--trainIters', default=0, type=int,
                     help='Total train iters')
 parser.add_argument('--valIters', default=0, type=int,

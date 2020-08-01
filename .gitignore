@@ -53,4 +53,4 @@ Video
 tmp
 runs
 *.zip
-exp/saved
+weight/saved

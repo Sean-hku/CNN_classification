@@ -4,7 +4,7 @@ import torch
 import torch.nn as nn
 import torchvision.models as models
 from torch.nn import functional as F
-from config import device
+from src.config import device
 import os
 
 

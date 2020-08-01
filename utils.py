@@ -1,7 +1,9 @@
 import cv2
 import numpy as np
 import torch
-from config import image_normalize_mean, image_normalize_std
+
+image_normalize_mean = [0.485, 0.456, 0.406]
+image_normalize_std = [0.229, 0.224, 0.225]
 
 
 def image_normalize(img_name, size=224):

@@ -9,8 +9,6 @@ from src.opt import opt
 '''
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
-image_normalize_mean = [0.485, 0.456, 0.406]
-image_normalize_std = [0.229, 0.224, 0.225]
 
 input_size_dict = {"inception":299, "resnet18":224, "resnet34":224, "resnet50":224, "resnet101":224, "resnet152":224,
                    "squeezenet":224, "LeNet": 28, "mobilenet":224, "shufflenet": 224}
@@ -30,8 +28,7 @@ pre_train_model_name = "mobilenet"
 
 
 config_data_path = os.path.join("data", train_type)
-model_save_path = os.path.join("models/saved/", train_type)
-feature_extract = False
+model_save_path = os.path.join("weight/saved/", train_type)
 
 
 input_size = input_size_dict[pre_train_model_name]
@@ -43,7 +40,7 @@ golf_ske_label_dict = {"backswing": 0, "standing": 1, "finish": 2}
 # ceiling_dict = {"BA":0, "BR":1, "BU":2, "FR":3, "SIDE BR":4, "SIDE FR":5, "STAND":6}
 # ceiling_dict = {"back":0, "butterfly":1, "freestyle":2, "frog":3, "side_freestyle":4, "side_frog":5, "standing":6}
 ceiling_dict = {"freestyle":0, "frog":1, "side_freestyle":2, "side_frog":3}
-underwater_dict = {"drown":0, "floating":1, "stand walk":2}
+underwater_dict = {"drown":0, "floating": 1, "stand walk":2}
 
 if train_type == "golf_ske":
     img_label_dict = golf_ske_label_dict
@@ -55,20 +52,6 @@ else:
     raise ValueError("Your type is wrong. Please check again")
 
 train_class_nums = len(img_label_dict)
-
-'''
-# 模型测试参数
-'''
-test_type = "golf"
-
-golf_label = ["Backswing", "Standing", "FollowThrough"]
-test_model_path = "test/model/golf_ske_shufflenet_2019-10-11-12-42-10.pth"
-test_sample_path = 'test/test_golf'
-
-if test_type == "golf":
-    test_label = golf_label
-else:
-    raise ValueError("Your type is wrong. Please check again")
 
 
 # 自动训练参数

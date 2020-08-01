@@ -3,12 +3,12 @@ from __future__ import print_function
 from src.model import CNNModel, LeNet
 from src.trainer import train_model
 from src.dataloader import DataLoader
-import config
+import src.config as config
 import torch.nn as nn
 import torch.optim as optim
 import time
 import os
-from opt import opt
+from src.opt import opt
 import torch
 
 device = config.device
@@ -33,7 +33,7 @@ if __name__ == "__main__":
     print("Params to learn:")
 
     if opt.loadModel:
-        model_path = os.path.join("models/pre_train_model/%s.pth" % pre_train_model_name)
+        model_path = os.path.join("weights/pre_train_model/%s.pth" % pre_train_model_name)
         model.load_state_dict(torch.load(model_path, map_location=device))
 
     if feature_extract:

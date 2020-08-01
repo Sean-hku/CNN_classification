@@ -12,8 +12,8 @@ class ImgAdjuster(object):
         self.val_ratio = val_r
         self.data_src = src
         if os.path.isdir("data"):
-            self.train_src = os.path.join("data", self.data_src, "train")
-            self.val_src = os.path.join("data", self.data_src, 'val')
+            self.train_src = os.path.join(self.data_src, "train")
+            self.val_src = os.path.join(self.data_src, 'val')
         else:
             self.train_src = os.path.join("../data", self.data_src, "train")
             self.val_src = os.path.join("../data", self.data_src, 'val')

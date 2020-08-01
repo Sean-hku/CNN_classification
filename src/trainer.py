@@ -4,7 +4,7 @@ from __future__ import division
 import torch
 import time
 import copy
-from config import device, img_label_dict
+from src.config import device, img_label_dict
 import codecs
 from tensorboardX import SummaryWriter
 import numpy as np

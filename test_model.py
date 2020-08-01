@@ -49,7 +49,7 @@ class Tester:
 
 
 if __name__ == '__main__':
-    model_pth = "models/pre_train_model/mnasnet.pth"
+    model_pth = "weight/pre_train_model/mnasnet.pth"
     img_path = "tmp/cat.jpeg"
     MI = Tester(model_pth)
     max_idx = MI.test_idx(cv2.imread(img_path))

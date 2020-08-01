@@ -1,7 +1,7 @@
-from src.model import SportModel, LeNet
+from src.model import CNNModel, LeNet
 from src.trainer import train_model
 from src.dataloader import DataLoader_Auto
-import config
+import src.config as config
 import torch.nn as nn
 import torch.optim as optim
 import time
