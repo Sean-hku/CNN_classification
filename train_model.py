@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 from __future__ import print_function
-from src.model import SportModel, LeNet
+from src.model import CNNModel, LeNet
 from src.trainer import train_model
 from src.dataloader import DataLoader
 import config
@@ -8,9 +8,11 @@ import torch.nn as nn
 import torch.optim as optim
 import time
 import os
+from opt import opt
+import torch
 
 device = config.device
-feature_extract = config.feature_extract
+feature_extract = opt.freeze
 num_epochs = config.epoch
 
 class_nums = config.train_class_nums
@@ -25,10 +27,14 @@ if __name__ == "__main__":
     if pre_train_model_name == "LeNet":
         model = LeNet(class_nums).to(device)
     else:
-        model = SportModel(class_nums, pre_train_model_name, feature_extract).model.to(device)
+        model = CNNModel(class_nums, pre_train_model_name, feature_extract).model.to(device)
 
     params_to_update = model.parameters()
     print("Params to learn:")
+
+    if opt.loadModel:
+        model_path = os.path.join("models/pre_train_model/%s.pth" % pre_train_model_name)
+        model.load_state_dict(torch.load(model_path, map_location=device))
 
     if feature_extract:
         params_to_update = []
@@ -41,7 +47,7 @@ if __name__ == "__main__":
             if param.requires_grad:
                 print("\t", name)
 
-    optimizer_ft = optim.Adam(params_to_update, lr=0.001)
+    optimizer_ft = optim.Adam(params_to_update, lr=opt.LR)
     criterion = nn.CrossEntropyLoss()
     data_loader = DataLoader(batch_size)
 

@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 from __future__ import print_function
 from config import device, feature_extract, input_size
-from src.model import SportModel
+from src.model import CNNModel
 import torch
 import numpy as np
 from torch import nn
@@ -10,7 +10,7 @@ from utils import image_normalize
 
 class ModelInference(object):
     def __init__(self, class_nums, pre_train_name, model_path):
-        self.sport_model = SportModel(class_nums, pre_train_name, feature_extract).model.to(device)
+        self.sport_model = CNNModel(class_nums, pre_train_name, feature_extract).model.to(device)
         self.sport_model.load_state_dict(torch.load(model_path, map_location=device))
 
     def predict(self, img):

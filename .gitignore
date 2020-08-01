@@ -51,3 +51,6 @@ model/pre_train_model
 SPPE
 yolo
 Video
+tmp
+runs
+*.zip

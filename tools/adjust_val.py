@@ -2,8 +2,8 @@ import os
 import random
 import shutil
 
-catag = "yoga"
-val_ratio = 0.01
+catag = "underwater"
+val_ratio = 0.2
 class_mark = "all"
 
 

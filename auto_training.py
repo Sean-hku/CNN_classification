@@ -40,7 +40,8 @@ class AutoTrainer(object):
         params_to_update = self.sport_model.parameters()
         self.criterion = nn.CrossEntropyLoss()
         self.optimizer_ft = optim.Adam(params_to_update, lr=lr)
-        self.data_loader = self.__get_dataloader()
+        self.data_loader = DataLoader_Auto(self.data_src, label_dict, config.batch_size_dict[self.pre_train_model_name],
+                                           config.input_size_dict[self.pre_train_model_name])
 
     def __load_model(self):
         if self.pre_train_model_name == "LeNet":
@@ -48,10 +49,10 @@ class AutoTrainer(object):
         else:
             model = SportModel(class_num, self.pre_train_model_name, feature_extract).model.to(device)
         return model
-
-    def __get_dataloader(self):
-        return DataLoader_Auto(self.data_src, label_dict, config.batch_size_dict[self.pre_train_model_name],
-                                           config.input_size_dict[self.pre_train_model_name])
+    #
+    # def __get_dataloader(self):
+    #     return DataLoader_Auto(self.data_src, label_dict, config.batch_size_dict[self.pre_train_model_name],
+    #                                        config.input_size_dict[self.pre_train_model_name])
 
     def record(self):
         with open(self.record_path, 'a') as f:

@@ -12,7 +12,7 @@ import cv2
 from utils import image2tensorboard
 
 record_num = 3
-label_dict = {v:k for k,v in img_label_dict.items()}
+label_dict = {v: k for k, v in img_label_dict.items()}
 
 
 def train_model(model, dataloaders, criterion, optimizer, num_epochs=25, is_inception=False,

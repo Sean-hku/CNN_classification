@@ -62,9 +62,8 @@ class ConvNet(nn.Module):
         return out
 
 
-class SportModel(object):
+class CNNModel(object):
     def __init__(self, num_classes=2, model_name="inception", feature_extract=True):
-        model_path = os.path.join("models/pre_train_model/%s.pth" % model_name)
         if model_name == "inception":
             self.model = models.inception_v3()
             self.set_parameter_requires_grad(self.model, feature_extract)
@@ -77,38 +76,32 @@ class SportModel(object):
             # input_size = 299
         elif model_name == "resnet18":
             self.model = models.resnet18()
-            self.model.load_state_dict(torch.load(model_path, map_location=device))
             self.set_parameter_requires_grad(self.model, feature_extract)
             num_ftrs = self.model.fc.in_features
             self.model.fc = nn.Linear(num_ftrs, num_classes)
             # input_size = 224
         elif model_name == "resnet34":
             self.model = models.resnet34()
-            self.model.load_state_dict(torch.load(model_path, map_location=device))
             self.set_parameter_requires_grad(self.model, feature_extract)
             num_ftrs = self.model.fc.in_features
             self.model.fc = nn.Linear(num_ftrs, num_classes)
         elif model_name == "resnet50":
             self.model = models.resnet50()
-            self.model.load_state_dict(torch.load(model_path, map_location=device))
             self.set_parameter_requires_grad(self.model, feature_extract)
             num_ftrs = self.model.fc.in_features
             self.model.fc = nn.Linear(num_ftrs, num_classes)
         elif model_name == "resnet101":
             self.model = models.resnet101()
-            self.model.load_state_dict(torch.load(model_path, map_location=device))
             self.set_parameter_requires_grad(self.model, feature_extract)
             num_ftrs = self.model.fc.in_features
             self.model.fc = nn.Linear(num_ftrs, num_classes)
         elif model_name == "resnet152":
             self.model = models.resnet152()
-            self.model.load_state_dict(torch.load(model_path, map_location=device))
             self.set_parameter_requires_grad(self.model, feature_extract)
             num_ftrs = self.model.fc.in_features
             self.model.fc = nn.Linear(num_ftrs, num_classes)
         elif model_name == "mobilenet":
             self.model = models.mobilenet_v2()
-            self.model.load_state_dict(torch.load(model_path, map_location=device))
             self.set_parameter_requires_grad(self.model, feature_extract)
             self.model.classifier = nn.Sequential(
                 nn.Dropout(0.2),
@@ -116,13 +109,11 @@ class SportModel(object):
             )
         elif model_name == "shufflenet":
             self.model = models.shufflenet_v2_x1_0()
-            self.model.load_state_dict(torch.load(model_path, map_location=device))
             self.set_parameter_requires_grad(self.model, feature_extract)
             num_ftrs = self.model.fc.in_features
             self.model.fc = nn.Linear(num_ftrs, num_classes)
         elif model_name == "squeezenet":
             self.model = models.squeezenet1_1()
-            self.model.load_state_dict(torch.load(model_path, map_location=device))
             self.set_parameter_requires_grad(self.model, feature_extract)
             self.model.classifier = nn.Sequential(
                 nn.Dropout(p=0.5),
@@ -132,7 +123,6 @@ class SportModel(object):
             )
         elif model_name == "mnasnet":
             self.model = models.mnasnet1_0()
-            self.model.load_state_dict(torch.load(model_path, map_location=device))
             self.set_parameter_requires_grad(self.model, feature_extract)
             self.classifier = nn.Sequential(nn.Dropout(p=0.2, inplace=True),
                                             nn.Linear(1280, num_classes))
