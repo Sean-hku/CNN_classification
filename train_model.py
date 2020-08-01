@@ -13,30 +13,31 @@ import torch
 
 device = config.device
 feature_extract = opt.freeze
-num_epochs = config.epoch
+num_epochs = opt.epoch
+data_name = opt.dataset
 
-class_nums = config.train_class_nums
-pre_train_model_name = config.pre_train_model_name
-model_type = config.train_type
-batch_size = config.batch_size_dict[pre_train_model_name]
+class_nums = len(config.datasets[data_name])
+data_dir = os.path.join("data", data_name)
+backbone = opt.backbone
+batch_size = opt.batch
 
-model_save_path = config.model_save_path
+model_save_path = os.path.join("exp/saved")
 
 if __name__ == "__main__":
     os.makedirs(model_save_path, exist_ok=True)
-    if pre_train_model_name == "LeNet":
+    if backbone == "LeNet":
         model = LeNet(class_nums).to(device)
     else:
-        model = CNNModel(class_nums, pre_train_model_name, feature_extract).model.to(device)
+        model = CNNModel(class_nums, backbone, feature_extract).model.to(device)
 
     params_to_update = model.parameters()
     print("Params to learn:")
 
     if opt.loadModel:
-        model_path = os.path.join("weights/pre_train_model/%s.pth" % pre_train_model_name)
+        model_path = os.path.join("weights/pre_train_model/%s.pth" % backbone)
         model.load_state_dict(torch.load(model_path, map_location=device))
 
-    if feature_extract:
+    if feature_extract > 0:
         params_to_update = []
         for name, param in model.named_parameters():
             if param.requires_grad:
@@ -49,13 +50,13 @@ if __name__ == "__main__":
 
     optimizer_ft = optim.Adam(params_to_update, lr=opt.LR)
     criterion = nn.CrossEntropyLoss()
-    data_loader = DataLoader(batch_size)
+    data_loader = DataLoader(data_dir, batch_size)
 
     time_str = time.strftime("%Y-%m-%d-%H-%M-%S", time.localtime())
-    model_str = model_type + "_%s_%s.pth" % (pre_train_model_name, time_str)
+    model_str = data_name + "_%s_%s.pth" % (backbone, time_str)
     log_save_path = os.path.join(model_save_path, model_str.replace(".pth", "_log.txt"))
 
-    is_inception = pre_train_model_name == "inception"
+    is_inception = backbone == "inception"
     silent_detect_model, hist = train_model(model, data_loader.dataloaders_dict, criterion, optimizer_ft,
                                             num_epochs=num_epochs, is_inception=is_inception, model_save_path=
                                             os.path.join(model_save_path, model_str), log_save_path=log_save_path)

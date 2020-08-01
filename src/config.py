@@ -7,17 +7,16 @@ from src.opt import opt
 '''
 基本参数
 '''
+
+datasets = {"ceiling": ["butterfly", "frog"]}
+if opt.backbone == 'inception':
+    input_size = 299
+else:
+    input_size = 224
+
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 
-input_size_dict = {"inception":299, "resnet18":224, "resnet34":224, "resnet50":224, "resnet101":224, "resnet152":224,
-                   "squeezenet":224, "LeNet": 28, "mobilenet":224, "shufflenet": 224}
-
-batch_size_dict = {"inception":32, "resnet18":64, "resnet34":64, "resnet50":64, "resnet101":32, "resnet152":32,
-                   "squeezenet":128, "LeNet": 128, "mobilenet":64, "shufflenet": 128}
-
-epochs_dict = {"inception":20, "resnet18":10, "resnet34":20, "resnet50":20, "resnet101":20, "resnet152":20,
-                   "squeezenet":20, "LeNet": 20, "mobilenet":20, "shufflenet": 20}
 
 
 '''
@@ -30,6 +29,15 @@ pre_train_model_name = "mobilenet"
 config_data_path = os.path.join("data", train_type)
 model_save_path = os.path.join("weight/saved/", train_type)
 
+
+input_size_dict = {"inception":299, "resnet18":224, "resnet34":224, "resnet50":224, "resnet101":224, "resnet152":224,
+                   "squeezenet":224, "LeNet": 28, "mobilenet":224, "shufflenet": 224}
+
+batch_size_dict = {"inception":32, "resnet18":64, "resnet34":64, "resnet50":64, "resnet101":32, "resnet152":32,
+                   "squeezenet":128, "LeNet": 128, "mobilenet":64, "shufflenet": 128}
+
+epochs_dict = {"inception":20, "resnet18":10, "resnet34":20, "resnet50":20, "resnet101":20, "resnet152":20,
+                   "squeezenet":20, "LeNet": 20, "mobilenet":20, "shufflenet": 20}
 
 input_size = input_size_dict[pre_train_model_name]
 epoch = epochs_dict[pre_train_model_name]
