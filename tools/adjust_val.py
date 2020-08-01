@@ -8,7 +8,7 @@ class_mark = "all"
 
 
 class ImgAdjuster(object):
-    def __init__(self, val_r, src, mark):
+    def __init__(self, val_r, src, mark="all"):
         self.val_ratio = val_r
         self.data_src = src
         if os.path.isdir("data"):

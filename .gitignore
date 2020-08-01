@@ -44,7 +44,6 @@ test/data/legacy_serialized.pt
 saved
 data
 test
-model/pre_train_model
 */**/__init__.py
 */*.pth
 */*.onnx
@@ -54,3 +53,4 @@ Video
 tmp
 runs
 *.zip
+exp/saved

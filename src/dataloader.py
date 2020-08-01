@@ -1,9 +1,11 @@
 from __future__ import print_function
 import torch
-import config
+import src.config as config
 from torch.utils.data import Dataset
 from utils import image_normalize
+from tools.adjust_val import ImgAdjuster
 import os
+from src.opt import opt
 
 input_size = config.input_size
 data_dir = config.config_data_path
@@ -51,6 +53,7 @@ class MyDataset(Dataset):
 
 class DataLoader(object):
     def __init__(self, batch_size):
+        adjust = ImgAdjuster(opt.val_ratio, data_dir, )
         self.image_datasets = {x: MyDataset(os.path.join(data_dir, x), config.img_label_dict)
                                for x in ['train', 'val']}
         # Create training and validation dataloaders
