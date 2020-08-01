@@ -54,3 +54,4 @@ tmp
 runs
 *.zip
 weight/saved
+src/config.py

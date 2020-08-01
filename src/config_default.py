@@ -12,3 +12,5 @@ else:
 
 
 # Testing
+test_model_path = "exp/pre_train_model/mnasnet.pth"
+test_img = "tmp/cat.jpeg"

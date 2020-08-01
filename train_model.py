@@ -22,7 +22,7 @@ backbone = opt.backbone
 batch_size = opt.batch
 
 modelID = opt.expID
-model_save_path = os.path.join("exp/saved/{}".format(modelID))
+model_save_path = os.path.join("weight/saved/{}".format(modelID))
 
 if __name__ == "__main__":
     os.makedirs(model_save_path, exist_ok=True)
@@ -35,7 +35,7 @@ if __name__ == "__main__":
     print("Params to learn:")
 
     if opt.loadModel:
-        model_path = os.path.join("weights/pre_train_model/%s.pth" % backbone)
+        model_path = os.path.join("weight/pre_train_model/%s.pth" % backbone)
         model.load_state_dict(torch.load(model_path, map_location=device))
 
     if feature_extract > 0:

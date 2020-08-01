@@ -1,6 +1,7 @@
 from src.tester import ModelInference
 import os
 import cv2
+from src import config
 
 num_classes = 1000
 
@@ -49,8 +50,8 @@ class Tester:
 
 
 if __name__ == '__main__':
-    model_pth = "weight/pre_train_model/mnasnet.pth"
-    img_path = "tmp/cat.jpeg"
+    model_pth = config.test_model_path
+    img_path = config.test_img
     MI = Tester(model_pth)
     max_idx = MI.test_idx(cv2.imread(img_path))
     print(max_idx)

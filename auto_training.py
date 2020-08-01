@@ -18,7 +18,7 @@ device = config.device
 exp_name = opt.expFolder
 lr = opt.LR
 
-save_folder = os.path.join("exp", exp_name, folder_name)
+save_folder = os.path.join("weight", exp_name, folder_name)
 os.makedirs(save_folder, exist_ok=True)
 
 
