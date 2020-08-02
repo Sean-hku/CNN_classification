@@ -58,4 +58,4 @@ src/config.py
 train_log.log
 auto_training.py
 train_result/tmp.txt
-weight/single_model
+weight
