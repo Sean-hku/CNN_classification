@@ -49,7 +49,7 @@ parser.add_argument('--sparse_decay', default=1, type=float,
 "----------------------------- Training options -----------------------------"
 parser.add_argument('--epoch', default=20, type=int,
                     help='Total number to train')
-parser.add_argument('--val_ratio', default=0.3, type=int,
+parser.add_argument('--val_ratio', default=0.3, type=float,
                     help='validation percentage')
 parser.add_argument('--batch', default=12, type=int,
                     help='Train-batch size')

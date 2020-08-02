@@ -7,6 +7,8 @@ from torch.autograd import Variable
 from src.config import device
 import torchvision
 import os
+from src.opt import opt
+from src.config import lr_decay
 
 image_normalize_mean = [0.485, 0.456, 0.406]
 image_normalize_std = [0.229, 0.224, 0.225]
@@ -199,3 +201,17 @@ def generate_cmd(ls):
         string += " "
     return string[:-1] + "\n"
 
+
+def adjust_lr(optimizer, epoch, nEpoch):
+    curr_ratio = epoch/nEpoch
+    bound = list(lr_decay.keys())
+    if curr_ratio > bound[0] and curr_ratio <= bound[1]:
+        lr = opt.LR * lr_decay[bound[0]]
+    elif curr_ratio > bound[1]:
+        lr = opt.LR * lr_decay[bound[1]]
+    else:
+        lr = opt.LR
+
+    for pg in optimizer.param_groups:
+        pg["lr"] = lr
+    return optimizer, lr

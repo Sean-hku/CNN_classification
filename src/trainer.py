@@ -5,7 +5,6 @@ import torch
 import time
 import copy
 from src.config import device, datasets, input_size, computer
-from tensorboardX import SummaryWriter
 import os
 import cv2
 from src import utils
@@ -16,7 +15,7 @@ record_num = 3
 label_dict = datasets[opt.dataset]
 
 
-def train_model(model, dataloaders, criterion, optimizer, cmd, is_inception=False, model_save_path="./"):
+def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_inception=False, model_save_path="./"):
     num_epochs = opt.epoch
     log_dir = os.path.join(model_save_path, opt.expID)
     os.makedirs(log_dir, exist_ok=True)
@@ -26,13 +25,14 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, is_inception=Fals
     train_acc, val_acc, train_loss, val_loss, best_epoch = 0, 0, float("inf"), float("inf"), 0
     epoch_ls = list(range(num_epochs))
 
-    writer = SummaryWriter()
 
     log_writer = open(log_save_path, "w")
     log_writer.write(cmd)
     log_writer.write("\n")
+    lr = opt.LR
 
     for epoch in range(num_epochs):
+        writer.add_scalar("lr", lr, epoch)
         epoch_start_time = time.time()
         print('Epoch {}/{}'.format(epoch, num_epochs - 1))
         print('-' * 20)
@@ -61,6 +61,7 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, is_inception=Fals
                 inputs = inputs.to(device)
                 labels = labels.to(device)
 
+                optimizer, lr = utils.adjust_lr(optimizer, epoch, opt.epoch)
                 optimizer.zero_grad()
 
                 with torch.set_grad_enabled(phase == 'train'):
@@ -141,11 +142,6 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, is_inception=Fals
     time_elapsed = time.time() - since
     print('Training complete in {:.0f}m {:.0f}s'.format(time_elapsed // 60, time_elapsed % 60))
     print('Best val Acc: {:.4f}'.format(val_acc))
-
-    if is_inception:
-        writer.add_graph(model, torch.rand(1, 3, 299, 299).to(device))
-    else:
-        writer.add_graph(model, torch.rand(1, 3, 224, 224).to(device))
 
     log_writer.write('Training complete in {:.0f}m {:.0f}s\n'.format(time_elapsed // 60, time_elapsed % 60))
     log_writer.write('Best val Acc: {:.4f}\n'.format(val_acc))

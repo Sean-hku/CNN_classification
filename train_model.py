@@ -11,6 +11,8 @@ from src.opt import opt
 import torch
 import sys
 from src import utils
+from tensorboardX import SummaryWriter
+
 
 try:
     from apex import amp
@@ -80,12 +82,19 @@ if __name__ == "__main__":
     if opt.optMethod == "adam":
         optimizer_ft = optim.Adam(params_to_update, lr=opt.LR, weight_decay=opt.weightDecay)
     elif opt.optMethod == 'rmsprop':
-        optimizer_ft = torch.optim.RMSprop(params_to_update, lr=opt.LR, momentum=opt.momentum,
-                                           weight_decay=opt.weightDecay)
+        optimizer_ft = optim.RMSprop(params_to_update, lr=opt.LR, momentum=opt.momentum, weight_decay=opt.weightDecay)
     elif opt.optMethod == 'sgd':
         optimizer_ft = optim.SGD(params_to_update, lr=opt.LR, momentum=opt.momentum, weight_decay=opt.weightDecay)
     else:
         raise ValueError("This optimizer is not supported now")
+
+    writer = SummaryWriter('tensorboard/{}/{}'.format(opt.expFolder, opt.expID), comment=cmd)
+
+    is_inception = backbone == "inception"
+    if is_inception:
+        writer.add_graph(model, torch.rand(1, 3, 299, 299).to(device))
+    else:
+        writer.add_graph(model, torch.rand(1, 3, 224, 224).to(device))
 
     if opt.mix_precision:
         m, optimizer = amp.initialize(model, optimizer_ft, opt_level="O1")
@@ -93,6 +102,6 @@ if __name__ == "__main__":
     criterion = nn.CrossEntropyLoss()
     data_loader = DataLoader(data_dir, batch_size)
 
-    train_model(model, data_loader.dataloaders_dict, criterion, optimizer_ft, cmd, is_inception=backbone == "inception",
+    train_model(model, data_loader.dataloaders_dict, criterion, optimizer_ft, cmd, writer, is_inception=is_inception,
                 model_save_path=model_save_path)
 
