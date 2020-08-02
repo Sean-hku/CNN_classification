@@ -10,6 +10,7 @@ import os
 import cv2
 from src import utils
 from src.opt import opt
+from apex import amp
 
 record_num = 3
 label_dict = datasets[opt.dataset]
@@ -77,7 +78,11 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, is_inception=Fals
                     _, preds = torch.max(outputs, 1)
 
                     if phase == 'train':
-                        loss.backward()
+                        if opt.mix_precision:
+                            with amp.scale_loss(loss, optimizer) as scaled_loss:
+                                scaled_loss.backward()
+                        else:
+                            loss.backward()
                         optimizer.step()
 
                 running_loss += loss.item() * inputs.size(0)
@@ -105,7 +110,7 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, is_inception=Fals
                 imgnames, pds = names[:3], [label_dict[i] for i in preds[:record_num].tolist()]
                 for idx, (img_path, pd) in enumerate(zip(imgnames, pds)):
                     img = cv2.imread(img_path)
-                    img = cv2.putText(img, pd,(20, 50),cv2.FONT_HERSHEY_PLAIN, 2, (0,255,0), 2)
+                    img = cv2.putText(img, pd,(20, 50),cv2.FONT_HERSHEY_PLAIN, 2, (0, 255, 0), 2)
                     #cv2.imwrite("tmp/{}_{}.jpg".format(epoch, idx), img)
                     tb_img = utils.image2tensorboard(img)
                     # images = torch.cat((images, torch.unsqueeze(tb_img, 0)), 0)
@@ -158,6 +163,7 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, is_inception=Fals
     inf_time = utils.get_inference_time(model, height=input_size, width=input_size)
     print("Inference time is {}".format(inf_time))
 
+    os.makedirs("result", exist_ok=True)
     result = os.path.join("result", "{}_result.txt".format(opt.expFolder))
     exist = os.path.exists(result)
     with open(result, "a+") as f:

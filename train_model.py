@@ -12,6 +12,12 @@ import torch
 import sys
 from src import utils
 
+try:
+    from apex import amp
+    opt.mix_precision = True
+except ImportError:
+    opt.mix_precision = False
+
 
 device = config.device
 feature_extract = opt.freeze
@@ -31,6 +37,8 @@ if __name__ == "__main__":
     print(opt)
     cmd_ls = sys.argv[1:]
     cmd = utils.generate_cmd(cmd_ls)
+    if "--freeze_bn False" in cmd:
+        opt.freeze_bn = False
 
     if backbone == "LeNet":
         model = LeNet(class_nums).to(device)
@@ -44,26 +52,45 @@ if __name__ == "__main__":
         model_path = os.path.join("weight/pre_train_model/%s.pth" % backbone)
         model.load_state_dict(torch.load(model_path, map_location=device))
 
-    if feature_extract > 0:
-        params_to_update = []
-        for name, param in model.named_parameters():
-            if param.requires_grad:
-                params_to_update.append(param)
-                print("\t", name)
-    else:
-        for name, param in model.named_parameters():
-            if param.requires_grad:
-                print("\t", name)
+    if opt.freeze > 0 or opt.freeze_bn:
+        try:
+            feature_layer_num = config.freeze_pretrain[opt.backbone][0]
+            classifier_layer_name = config.freeze_pretrain[opt.backbone][1]
+            feature_num = int(opt.freeze * feature_layer_num)
+
+            for idx, (n, p) in enumerate(model.named_parameters()):
+                if len(p.shape) == 1 and opt.freeze_bn:
+                    p.requires_grad = False
+                elif classifier_layer_name not in n and idx < feature_num:
+                    p.requires_grad = False
+                else:
+                    p.requires_grad = True
+        except:
+            raise ValueError("This model is not supported for freezing now")
+
+    params_to_update, layers = [], 0
+    for name, param in model.named_parameters():
+        layers += 1
+        if param.requires_grad:
+            params_to_update.append(param)
+            print("\t", name)
+
+    print("Training {} layers out of {}".format(len(params_to_update), layers))
 
     if opt.optMethod == "adam":
-        optimizer_ft = optim.Adam(params_to_update, lr=opt.LR)
+        optimizer_ft = optim.Adam(params_to_update, lr=opt.LR, weight_decay=opt.weightDecay)
+    elif opt.optMethod == 'rmsprop':
+        optimizer_ft = torch.optim.RMSprop(params_to_update, lr=opt.LR, momentum=opt.momentum,
+                                           weight_decay=opt.weightDecay)
     else:
-        raise ValueError("Wrong optimizer name")
+        raise ValueError("This optimizer is not supported now")
+
+    if opt.mix_precision:
+        m, optimizer = amp.initialize(model, optimizer_ft, opt_level="O1")
 
     criterion = nn.CrossEntropyLoss()
     data_loader = DataLoader(data_dir, batch_size)
 
-    is_inception = backbone == "inception"
-    train_model(model, data_loader.dataloaders_dict, criterion, optimizer_ft, cmd, is_inception=is_inception,
+    train_model(model, data_loader.dataloaders_dict, criterion, optimizer_ft, cmd, is_inception=backbone == "inception",
                 model_save_path=model_save_path)
 
