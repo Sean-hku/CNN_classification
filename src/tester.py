@@ -5,7 +5,7 @@ from src.model import CNNModel
 import torch
 import numpy as np
 from torch import nn
-from utils import image_normalize
+from src.utils import image_normalize
 
 
 class ModelInference(object):

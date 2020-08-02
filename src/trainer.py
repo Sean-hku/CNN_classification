@@ -4,35 +4,41 @@ from __future__ import division
 import torch
 import time
 import copy
-from src.config import device, datasets
-import codecs
+from src.config import device, datasets, input_size, computer
 from tensorboardX import SummaryWriter
-import numpy as np
+import os
 import cv2
-from utils import image2tensorboard
+from src import utils
 from src.opt import opt
 
 record_num = 3
 label_dict = datasets[opt.dataset]
 
 
-def train_model(model, dataloaders, criterion, optimizer, num_epochs=25, is_inception=False,
-                       model_save_path="./", log_save_path=""):
+def train_model(model, dataloaders, criterion, optimizer, cmd, is_inception=False, model_save_path="./"):
+    num_epochs = opt.epoch
+    log_dir = os.path.join(model_save_path, opt.expID)
+    os.makedirs(log_dir, exist_ok=True)
+    log_save_path = os.path.join(log_dir, "log.txt")
     since = time.time()
-    val_acc_history = []
+    val_acc_history, train_acc_history, val_loss_history, train_loss_history = [], [], [], []
+    train_acc, val_acc, train_loss, val_loss, best_epoch = 0, 0, float("inf"), float("inf"), 0
+    epoch_ls = list(range(num_epochs))
+
     writer = SummaryWriter()
 
     best_model_wts = copy.deepcopy(model.state_dict())
-    best_acc = 0.0
 
-    log_file_writer = codecs.open(log_save_path, mode="w")
+    log_writer = open(log_save_path, "w")
+    log_writer.write(cmd)
+    log_writer.write("\n")
 
     for epoch in range(num_epochs):
         epoch_start_time = time.time()
         print('Epoch {}/{}'.format(epoch, num_epochs - 1))
         print('-' * 20)
-        log_file_writer.write('Epoch {}/{}\n'.format(epoch, num_epochs - 1))
-        log_file_writer.write('-' * 10 + "\n")
+        log_writer.write('Epoch {}/{}\n'.format(epoch, num_epochs - 1))
+        log_writer.write('-' * 10 + "\n")
 
         for name, param in model.named_parameters():
             writer.add_histogram(
@@ -85,16 +91,15 @@ def train_model(model, dataloaders, criterion, optimizer, num_epochs=25, is_ince
             epoch_acc = running_corrects.double() / len(dataloaders[phase].dataset)
 
             print('{} Loss: {:.4f} Acc: {:.4f}'.format(phase, epoch_loss, epoch_acc))
-            log_file_writer.write('{} Loss: {:.4f} Acc: {:.4f}\n'.format(phase, epoch_loss, epoch_acc))
+            log_writer.write('{} Loss: {:.4f} Acc: {:.4f}\n'.format(phase, epoch_loss, epoch_acc))
 
             # deep copy the model
-            if phase == 'val' and epoch_acc > best_acc:
-                best_acc = epoch_acc
-                best_model_wts = copy.deepcopy(model.state_dict())
-                torch.save(best_model_wts, model_save_path)
 
             if phase == 'val':
+                val_loss_history.append(epoch_loss)
                 val_acc_history.append(epoch_acc)
+                val_loss = epoch_loss if epoch_loss < val_loss else val_loss
+
                 writer.add_scalar("scalar/val_acc", epoch_acc, epoch)
                 writer.add_scalar("Scalar/val_loss", epoch_loss, epoch)
                 imgnames, pds = names[:3], [label_dict[i] for i in preds[:record_num].tolist()]
@@ -102,36 +107,66 @@ def train_model(model, dataloaders, criterion, optimizer, num_epochs=25, is_ince
                     img = cv2.imread(img_path)
                     img = cv2.putText(img, pd,(20, 50),cv2.FONT_HERSHEY_PLAIN, 2, (0,255,0), 2)
                     #cv2.imwrite("tmp/{}_{}.jpg".format(epoch, idx), img)
-                    tb_img = image2tensorboard(img)
+                    tb_img = utils.image2tensorboard(img)
                     # images = torch.cat((images, torch.unsqueeze(tb_img, 0)), 0)
                     writer.add_image("pred_image_for_epoch{}".format(epoch), tb_img, epoch)
+
+                if epoch % opt.save_interval == 0:
+                    torch.save(best_model_wts,
+                               os.path.join(model_save_path, "{}_{}_{}.pth".format(opt.expID, opt.backbone,epoch)))
+
                 # writer.add_image("pred_image_for_epoch{}".format(epoch), images[1:, :, :, :])
+                if epoch_acc > val_acc:
+                    torch.save(model.state_dict(), os.path.join(model_save_path, "{}_best.pth".format(opt.expID)))
+                    val_acc = epoch_acc
+                    best_epoch = epoch
 
             else:
+                train_acc_history.append(epoch_acc)
+                train_loss_history.append(epoch_loss)
+                train_acc = epoch_acc if epoch_acc > train_acc else train_acc
+                train_loss = epoch_loss if epoch_loss < train_loss else train_loss
                 writer.add_scalar("scalar/train_acc", epoch_acc, epoch)
                 writer.add_scalar("Scalar/train_loss", epoch_loss, epoch)
 
         epoch_time_cost = time.time() - epoch_start_time
         print("epoch complete in {:.0f}m {:.0f}s".format(epoch_time_cost // 60, epoch_time_cost % 60))
-        log_file_writer.write(
+        log_writer.write(
             "epoch complete in {:.0f}m {:.0f}s\n".format(epoch_time_cost // 60, epoch_time_cost % 60))
+        torch.save(opt, '{}/option.pkl'.format(model_save_path))
 
     time_elapsed = time.time() - since
     print('Training complete in {:.0f}m {:.0f}s'.format(time_elapsed // 60, time_elapsed % 60))
-    print('Best val Acc: {:.4f}'.format(best_acc))
-    # print('Best test Acc: {:.4f}'.format(max(test_acc_history)))
+    print('Best val Acc: {:.4f}'.format(val_acc))
 
     if is_inception:
         writer.add_graph(model, torch.rand(1, 3, 299, 299).to(device))
     else:
         writer.add_graph(model, torch.rand(1, 3, 224, 224).to(device))
 
-    log_file_writer.write('Training complete in {:.0f}m {:.0f}s\n'.format(time_elapsed // 60, time_elapsed % 60))
-    log_file_writer.write('Best val Acc: {:.4f}\n'.format(best_acc))
-    # log_file_writer.write('Best test Acc: {:.4f}\n'.format(max(test_acc_history)))
+    log_writer.write('Training complete in {:.0f}m {:.0f}s\n'.format(time_elapsed // 60, time_elapsed % 60))
+    log_writer.write('Best val Acc: {:.4f}\n'.format(val_acc))
+    # log_writer.write('Best test Acc: {:.4f}\n'.format(max(test_acc_history)))
 
-    log_file_writer.close()
+    log_writer.close()
 
-    # load best model weights
-    model.load_state_dict(best_model_wts)
-    return model, val_acc_history
+    utils.draw_graph(epoch_ls, train_loss_history, val_loss_history, train_acc_history, train_loss_history, log_dir)
+    flops = utils.print_model_param_flops(model)
+    print("FLOPs of current model is {}".format(flops))
+    params = utils.print_model_param_nums(model)
+    print("Parameters of current model is {}".format(params))
+    inf_time = utils.get_inference_time(model, height=input_size, width=input_size)
+    print("Inference time is {}".format(inf_time))
+
+    result = os.path.join("result", "{}_result.txt".format(opt.expFolder))
+    exist = os.path.exists(result)
+    with open(result, "a+") as f:
+        if not exist:
+            f.write("id,backbone,params,flops,time,batch_size,optimizer,freeze_bn,freeze,sparse,sparse_decay,epoch_num,"
+                    "LR,weightDecay,loadModel,location, ,folder_name,train_acc,train_loss,val_acc,val_loss,best_epoch\n")
+        f.write("{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}, ,{},{},{},{},{},{}\n"
+                .format(opt.expID, opt.backbone, params, flops, inf_time,opt.batch, opt.optMethod,  opt.freeze_bn,
+                        opt.freeze, opt.sparse_s, opt.sparse_decay, opt.epoch, opt.LR, opt.weightDecay, opt.loadModel,
+                        computer,
+                        os.path.join(opt.expFolder, opt.expID), train_acc, train_loss, val_acc, val_loss, best_epoch))
+

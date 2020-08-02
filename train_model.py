@@ -6,10 +6,12 @@ from src.dataloader import DataLoader
 import src.config as config
 import torch.nn as nn
 import torch.optim as optim
-import time
 import os
 from src.opt import opt
 import torch
+import sys
+from src import utils
+
 
 device = config.device
 feature_extract = opt.freeze
@@ -22,10 +24,14 @@ backbone = opt.backbone
 batch_size = opt.batch
 
 modelID = opt.expID
-model_save_path = os.path.join("weight/saved/{}".format(modelID))
+model_save_path = os.path.join("weight/{}/{}".format(opt.expFolder, modelID))
+os.makedirs(model_save_path, exist_ok=True)
 
 if __name__ == "__main__":
-    os.makedirs(model_save_path, exist_ok=True)
+    print(opt)
+    cmd_ls = sys.argv[1:]
+    cmd = utils.generate_cmd(cmd_ls)
+
     if backbone == "LeNet":
         model = LeNet(class_nums).to(device)
     else:
@@ -49,18 +55,15 @@ if __name__ == "__main__":
             if param.requires_grad:
                 print("\t", name)
 
-    optimizer_ft = optim.Adam(params_to_update, lr=opt.LR)
+    if opt.optMethod == "adam":
+        optimizer_ft = optim.Adam(params_to_update, lr=opt.LR)
+    else:
+        raise ValueError("Wrong optimizer name")
+
     criterion = nn.CrossEntropyLoss()
     data_loader = DataLoader(data_dir, batch_size)
 
-    time_str = time.strftime("%Y-%m-%d-%H-%M-%S", time.localtime())
-    model_str = data_name + "_%s_%s.pth" % (backbone, time_str)
-    log_save_path = os.path.join(model_save_path, model_str.replace(".pth", "_log.txt"))
-
     is_inception = backbone == "inception"
-    silent_detect_model, hist = train_model(model, data_loader.dataloaders_dict, criterion, optimizer_ft,
-                                            num_epochs=opt.epoch, is_inception=is_inception, model_save_path=
-                                            os.path.join(model_save_path, model_str), log_save_path=log_save_path)
+    train_model(model, data_loader.dataloaders_dict, criterion, optimizer_ft, cmd, is_inception=is_inception,
+                model_save_path=model_save_path)
 
-    # save model
-    print("train model done, save model to %s" % os.path.join(model_save_path, model_str))

@@ -2,7 +2,7 @@ from __future__ import print_function
 import torch
 import src.config as config
 from torch.utils.data import Dataset
-from utils import image_normalize
+from src.utils import image_normalize
 from tools.adjust_val import ImgAdjuster
 import os
 from src.opt import opt
@@ -53,13 +53,3 @@ class DataLoader(object):
                                                                 shuffle=True, num_workers=opt.num_worker)
                             for x in ['train', 'val', ]}
 
-
-# class DataLoader_Auto(object):
-#     def __init__(self, data_src, label_dict, batch_size_auto, inp_size):
-#         adjust = ImgAdjuster(opt.val_ratio, data_src)
-#         adjust.run()
-#         self.image_datasets = {x: MyDataset(os.path.join(data_src, x), label_dict, size=inp_size)
-#                                for x in ['train', 'val']}
-#         self.dataloaders_dict = {x: torch.utils.data.DataLoader(self.image_datasets[x], batch_size=batch_size_auto,
-#                                                                 shuffle=True, num_workers=1)
-#                                  for x in ['train', 'val',]}
