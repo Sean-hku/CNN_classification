@@ -28,8 +28,6 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, is_inception=Fals
 
     writer = SummaryWriter()
 
-    best_model_wts = copy.deepcopy(model.state_dict())
-
     log_writer = open(log_save_path, "w")
     log_writer.write(cmd)
     log_writer.write("\n")
@@ -117,7 +115,7 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, is_inception=Fals
                     writer.add_image("pred_image_for_epoch{}".format(epoch), tb_img, epoch)
 
                 if epoch % opt.save_interval == 0:
-                    torch.save(best_model_wts,
+                    torch.save(model.state_dict(),
                                os.path.join(model_save_path, "{}_{}_{}.pth".format(opt.expID, opt.backbone,epoch)))
 
                 # writer.add_image("pred_image_for_epoch{}".format(epoch), images[1:, :, :, :])

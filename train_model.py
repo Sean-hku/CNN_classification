@@ -82,6 +82,8 @@ if __name__ == "__main__":
     elif opt.optMethod == 'rmsprop':
         optimizer_ft = torch.optim.RMSprop(params_to_update, lr=opt.LR, momentum=opt.momentum,
                                            weight_decay=opt.weightDecay)
+    elif opt.optMethod == 'sgd':
+        optimizer_ft = optim.SGD(params_to_update, lr=opt.LR, momentum=opt.momentum, weight_decay=opt.weightDecay)
     else:
         raise ValueError("This optimizer is not supported now")
 
