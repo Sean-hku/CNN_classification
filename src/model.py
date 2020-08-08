@@ -3,6 +3,10 @@ from __future__ import print_function
 import torch.nn as nn
 import torchvision.models as models
 from torch.nn import functional as F
+import os
+from src.opt import opt
+from src.config import device
+import torch
 
 
 class LeNet(nn.Module):
@@ -64,6 +68,9 @@ class CNNModel(object):
         if model_name == "inception":
             self.model = models.inception_v3()
             self.set_parameter_requires_grad(self.model, feature_extract)
+            if opt.loadModel:
+                model_path = os.path.join("pre_train_model/%s.pth" % model_name)
+                self.model.load_state_dict(torch.load(model_path, map_location=device))
             # Handle the auxilary net
             num_ftrs = self.model.AuxLogits.fc.in_features
             self.model.AuxLogits.fc = nn.Linear(num_ftrs, num_classes)
@@ -74,32 +81,50 @@ class CNNModel(object):
         elif model_name == "resnet18":
             self.model = models.resnet18()
             self.set_parameter_requires_grad(self.model, feature_extract)
+            if opt.loadModel:
+                model_path = os.path.join("pre_train_model/%s.pth" % model_name)
+                self.model.load_state_dict(torch.load(model_path, map_location=device))
             num_ftrs = self.model.fc.in_features
             self.model.fc = nn.Linear(num_ftrs, num_classes)
             # input_size = 224
         elif model_name == "resnet34":
             self.model = models.resnet34()
             self.set_parameter_requires_grad(self.model, feature_extract)
+            if opt.loadModel:
+                model_path = os.path.join("pre_train_model/%s.pth" % model_name)
+                self.model.load_state_dict(torch.load(model_path, map_location=device))
             num_ftrs = self.model.fc.in_features
             self.model.fc = nn.Linear(num_ftrs, num_classes)
         elif model_name == "resnet50":
             self.model = models.resnet50()
             self.set_parameter_requires_grad(self.model, feature_extract)
+            if opt.loadModel:
+                model_path = os.path.join("pre_train_model/%s.pth" % model_name)
+                self.model.load_state_dict(torch.load(model_path, map_location=device))
             num_ftrs = self.model.fc.in_features
             self.model.fc = nn.Linear(num_ftrs, num_classes)
         elif model_name == "resnet101":
             self.model = models.resnet101()
             self.set_parameter_requires_grad(self.model, feature_extract)
+            if opt.loadModel:
+                model_path = os.path.join("pre_train_model/%s.pth" % model_name)
+                self.model.load_state_dict(torch.load(model_path, map_location=device))
             num_ftrs = self.model.fc.in_features
             self.model.fc = nn.Linear(num_ftrs, num_classes)
         elif model_name == "resnet152":
             self.model = models.resnet152()
             self.set_parameter_requires_grad(self.model, feature_extract)
+            if opt.loadModel:
+                model_path = os.path.join("pre_train_model/%s.pth" % model_name)
+                self.model.load_state_dict(torch.load(model_path, map_location=device))
             num_ftrs = self.model.fc.in_features
             self.model.fc = nn.Linear(num_ftrs, num_classes)
         elif model_name == "mobilenet":
             self.model = models.mobilenet_v2()
             self.set_parameter_requires_grad(self.model, feature_extract)
+            if opt.loadModel:
+                model_path = os.path.join("pre_train_model/%s.pth" % model_name)
+                self.model.load_state_dict(torch.load(model_path, map_location=device))
             self.model.classifier = nn.Sequential(
                 nn.Dropout(0.2),
                 nn.Linear(self.model.last_channel, num_classes),
@@ -107,11 +132,17 @@ class CNNModel(object):
         elif model_name == "shufflenet":
             self.model = models.shufflenet_v2_x1_0()
             self.set_parameter_requires_grad(self.model, feature_extract)
+            if opt.loadModel:
+                model_path = os.path.join("pre_train_model/%s.pth" % model_name)
+                self.model.load_state_dict(torch.load(model_path, map_location=device))
             num_ftrs = self.model.fc.in_features
             self.model.fc = nn.Linear(num_ftrs, num_classes)
         elif model_name == "squeezenet":
             self.model = models.squeezenet1_1()
             self.set_parameter_requires_grad(self.model, feature_extract)
+            if opt.loadModel:
+                model_path = os.path.join("pre_train_model/%s.pth" % model_name)
+                self.model.load_state_dict(torch.load(model_path, map_location=device))
             self.model.classifier = nn.Sequential(
                 nn.Dropout(p=0.5),
                 nn.Conv2d(512, num_classes, kernel_size=1),
@@ -121,6 +152,9 @@ class CNNModel(object):
         elif model_name == "mnasnet":
             self.model = models.mnasnet1_0()
             self.set_parameter_requires_grad(self.model, feature_extract)
+            if opt.loadModel:
+                model_path = os.path.join("pre_train_model/%s.pth" % model_name)
+                self.model.load_state_dict(torch.load(model_path, map_location=device))
             self.classifier = nn.Sequential(nn.Dropout(p=0.2, inplace=True),
                                             nn.Linear(1280, num_classes))
         else:

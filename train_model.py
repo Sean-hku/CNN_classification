@@ -49,10 +49,10 @@ if __name__ == "__main__":
 
     params_to_update = model.parameters()
     # print("Params to learn:")
-
-    if opt.loadModel:
-        model_path = os.path.join("weight/pre_train_model/%s.pth" % backbone)
-        model.load_state_dict(torch.load(model_path, map_location=device))
+    #
+    # if opt.loadModel:
+    #     model_path = os.path.join("pre_train_model/%s.pth" % backbone)
+    #     model.load_state_dict(torch.load(model_path, map_location=device))
 
     if opt.freeze > 0 or opt.freeze_bn:
         try:

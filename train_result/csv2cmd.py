@@ -40,8 +40,6 @@ for idx, mdl in enumerate(data[1:]):
             valid = True
     tmp += "--expID {}".format(idx+1)
     cmd = begin + tmp + "'\n"
-    cmd.replace("TRUE", "True")
-    cmd.replace("FALSE", "False")
     if valid:
         cmds.append(cmd)
     else:
