@@ -65,11 +65,11 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_incept
                                    opt.expID, opt.backbone, class_nums)),
                             os.path.join(model_save_path, "{}_{}_{}cls_decay{}_best.pth".format(
                                    opt.expID, opt.backbone, class_nums, decay)))
-                decay_epoch.append(epoch)
                 model = best_weight
                 if decay > opt.lr_decay_time:
                     stop = True
                 else:
+                    decay_epoch.append(epoch)
                     early_stopping.reset(int(opt.patience * patience_decay[decay]))
 
         for epo, ac in config.bad_epochs.items():
