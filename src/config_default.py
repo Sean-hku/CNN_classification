@@ -21,7 +21,7 @@ freeze_pretrain = {"mobilenet": [155, "classifier"],
                    }
 
 warm_up = {0: 0.1, 1: 0.5}
-bad_epochs = {30: 0.1}
+bad_epochs = {10: 0.5}
 patience_decay = {1: 0.5, 2: 0.5, 3: 0}
 
 
