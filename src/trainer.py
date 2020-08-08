@@ -11,7 +11,7 @@ from src import utils
 from src.opt import opt
 from apex import amp
 import copy
-from src.utils import warm_up_lr, lr_decay, EarlyStopping
+from src.utils import warm_up_lr, lr_decay, EarlyStopping, write_decay_title, write_decay_info
 import shutil
 
 record_num = 3
@@ -209,12 +209,16 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_incept
     exist = os.path.exists(result)
     with open(result, "a+") as f:
         if not exist:
-            f.write("id,backbone,params,flops,time,batch_size,optimizer,freeze_bn,freeze,sparse,sparse_decay,epoch_num,"
-                    "LR,weightDecay,loadModel,location, ,folder_name,train_acc,train_loss,val_acc,val_loss,best_epoch,"
-                    "decay1,decay2,decay3\n")
-        f.write("{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}, ,{},{},{},{},{},{},{},{},{}\n"
-                .format(opt.expID, opt.backbone, params, flops, inf_time, opt.batch, opt.optMethod,  opt.freeze_bn,
-                        opt.freeze, opt.sparse_s, opt.sparse_decay, opt.epoch, opt.LR, opt.weightDecay, opt.loadModel,
-                        computer, os.path.join(opt.expFolder, opt.expID), train_acc, train_loss, val_acc, val_loss,
-                        best_epoch, decay_epoch[0], decay_epoch[1], decay_epoch[2]))
+            title_str = "id,backbone,params,flops,time,batch_size,optimizer,freeze_bn,freeze,sparse,sparse_decay," \
+                        "epoch_num,LR,weightDecay,loadModel,location, ,folder_name,train_acc,train_loss,val_acc," \
+                        "val_loss,best_epoch\n"
+            title_str = write_decay_title(len(decay_epoch), title_str)
+            f.write(title_str)
+        info_str = "{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}, ,{},{},{},{},{},{}\n".format(
+            opt.expID, opt.backbone, params, flops, inf_time, opt.batch, opt.optMethod,  opt.freeze_bn, opt.freeze,
+            opt.sparse_s, opt.sparse_decay, opt.epoch, opt.LR, opt.weightDecay, opt.loadModel, computer,
+            os.path.join(opt.expFolder, opt.expID), train_acc, train_loss, val_acc, val_loss, best_epoch)
+        info_str = write_decay_info(decay_epoch, info_str)
+        f.write(info_str)
+
 

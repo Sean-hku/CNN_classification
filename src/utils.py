@@ -238,6 +238,24 @@ def warm_up_lr(optimizer, epoch):
     return optimizer, lr
 
 
+def write_decay_title(num, char):
+    char = char[:-1]
+    for n in range(num):
+        char += ",decay"
+        char += str(n+1)
+    char += "\n"
+    return char
+
+
+def write_decay_info(decays, char):
+    char = char[:-1]
+    for d in decays:
+        char += ","
+        char += str(d)
+    char += "\n"
+    return char
+
+
 class EarlyStopping:
     """Early stops the training if validation loss doesn't improve after a given patience."""
     def __init__(self, patience=5, verbose=False, delta=0, path='checkpoint.pt'):
