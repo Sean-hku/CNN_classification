@@ -48,7 +48,7 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_incept
     for epoch in range(num_epochs):
         log_tmp = [epoch]
 
-        if decay == opt.lr_decay_time:
+        if decay > opt.lr_decay_time:
             stop = True
         for epo, ac in config.bad_epochs.items():
             if epoch == epo and val_acc < ac:

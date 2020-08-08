@@ -60,3 +60,4 @@ auto_training.py
 train_result/tmp.txt
 weight
 result
+tensorboard
