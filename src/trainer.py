@@ -68,6 +68,16 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_incept
                 decay_epoch.append(epoch)
                 model = best_weight
                 early_stopping.reset(int(opt.patience * patience_decay[decay]))
+
+        if decay > opt.lr_decay_time:
+            stop = True
+        for epo, ac in config.bad_epochs.items():
+            if epoch == epo and val_acc < ac:
+                stop = True
+        if stop:
+            print("Training finished at epoch {}".format(epoch))
+            break
+
         log_tmp.append(lr)
         log_tmp.append("")
 
@@ -187,16 +197,6 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_incept
         torch.save(opt, '{}/option.pth'.format(model_save_path))
         csv_writer.writerow(log_tmp)
 
-        if decay > opt.lr_decay_time:
-            stop = True
-        for epo, ac in config.bad_epochs.items():
-            if epoch == epo and val_acc < ac:
-                stop = True
-        if stop:
-            print("Training finished at epoch {}".format(epoch))
-            break
-
-
     time_elapsed = time.time() - since
     print('Training complete in {:.0f}m {:.0f}s'.format(time_elapsed // 60, time_elapsed % 60))
     print('Best val Acc: {:.4f}'.format(val_acc))
@@ -223,7 +223,7 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_incept
                         "val_loss,best_epoch,total_epoch\n"
             title_str = write_decay_title(len(decay_epoch), title_str)
             f.write(title_str)
-        info_str = "{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}, ,{},{},{},{},{},{}\n".format(
+        info_str = "{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}, ,{},{},{},{},{},{},{}\n".format(
             opt.expID, opt.backbone, params, flops, inf_time, opt.batch, opt.optMethod,  opt.freeze_bn, opt.freeze,
             opt.sparse_s, opt.sparse_decay, opt.epoch, opt.LR, opt.weightDecay, opt.loadModel, computer,
             os.path.join(opt.expFolder, opt.expID), train_acc, train_loss, val_acc, val_loss, best_epoch, epoch)
