@@ -29,7 +29,7 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_incept
     since = time.time()
     best_weight = copy.deepcopy(model)
     val_acc_history, train_acc_history, val_loss_history, train_loss_history = [], [], [], []
-    train_acc, val_acc, train_loss, val_loss, best_epoch, epoch_acc = 0, 0, float("inf"), float("inf"), 0, 0
+    train_acc, val_acc, train_loss, val_loss, best_epoch, epoch_acc, epoch = 0, 0, float("inf"), float("inf"), 0, 0, 0
     epoch_ls = []
     early_stopping = EarlyStopping(patience=opt.patience, verbose=True)
 
@@ -43,7 +43,7 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_incept
     train_log_name = log_save_path.replace("log.txt", "train_log.csv")
     train_log = open(train_log_name, "w", newline="")
     csv_writer = csv.writer(train_log)
-    csv_writer.writerow(["epoch", "lr", " ", "train_loss", "val_loss", "train_acc", "val_acc"])
+    csv_writer.writerow(["epoch", "lr", " ", "train_acc", "train_loss", "val_acc", "val_loss"])
 
     for epoch in range(num_epochs):
         log_tmp = [epoch]
@@ -147,7 +147,7 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_incept
             print('{} Loss: {:.4f} Acc: {:.4f}'.format(phase, epoch_loss, epoch_acc))
             log_writer.write('{} Loss: {:.4f} Acc: {:.4f}\n'.format(phase, epoch_loss, epoch_acc))
 
-            log_tmp.append(epoch_acc)
+            log_tmp.append(epoch_acc.tolist())
             log_tmp.append(epoch_loss)
 
             if phase == 'val':
