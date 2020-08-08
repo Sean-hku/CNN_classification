@@ -16,6 +16,16 @@ if include_cuda:
 else:
     begin = "'python train_model.py "
 
+
+def change_upper(name):
+    if name == "FALSE":
+        return "False"
+    elif name == "TRUE":
+        return "True"
+    else:
+        return name
+
+
 cmds = []
 for idx, mdl in enumerate(data[1:]):
     tmp = ""
@@ -25,11 +35,13 @@ for idx, mdl in enumerate(data[1:]):
             tmp += "--"
             tmp += o
             tmp += " "
-            tmp += m
+            tmp += change_upper(m)
             tmp += " "
             valid = True
     tmp += "--expID {}".format(idx+1)
     cmd = begin + tmp + "'\n"
+    cmd.replace("TRUE", "True")
+    cmd.replace("FALSE", "False")
     if valid:
         cmds.append(cmd)
     else:
