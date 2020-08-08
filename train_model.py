@@ -88,7 +88,7 @@ if __name__ == "__main__":
     else:
         raise ValueError("This optimizer is not supported now")
 
-    writer = SummaryWriter('tensorboard/{}/{}'.format(opt.expFolder, opt.expID), comment=cmd)
+    writer = SummaryWriter('weight/{}/{}'.format(opt.expFolder, opt.expID), comment=cmd)
 
     is_inception = backbone == "inception"
     if is_inception:

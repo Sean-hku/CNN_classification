@@ -12,7 +12,7 @@ if CUDA != -1:
 else:
     cmds = [cmd[0] + cmd[23:-1] + ",\n" for cmd in target_cmds]
 
-with open("tmp.txt", "a+") as cf:
+with open("{}/tmp.txt".format(models_name), "a+") as cf:
     for cmd in cmds:
         cf.write(cmd)
     cf.write("\n")

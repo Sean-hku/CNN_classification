@@ -1,1 +1,1 @@
-models_name = "training_demo"
+models_name = "ceiling_2cls"

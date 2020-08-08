@@ -64,13 +64,14 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_incept
                 shutil.copy(os.path.join(model_save_path, "{}_{}_{}cls_best.pth".format(
                                    opt.expID, opt.backbone, class_nums)),
                             os.path.join(model_save_path, "{}_{}_{}cls_decay{}_best.pth".format(
-                                   opt.expID, opt.backbone, decay, class_nums)))
+                                   opt.expID, opt.backbone, class_nums, decay)))
                 decay_epoch.append(epoch)
                 model = best_weight
-                early_stopping.reset(int(opt.patience * patience_decay[decay]))
+                if decay > opt.lr_decay_time:
+                    stop = True
+                else:
+                    early_stopping.reset(int(opt.patience * patience_decay[decay]))
 
-        if decay > opt.lr_decay_time:
-            stop = True
         for epo, ac in config.bad_epochs.items():
             if epoch == epo and val_acc < ac:
                 stop = True
