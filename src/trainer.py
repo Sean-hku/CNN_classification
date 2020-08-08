@@ -3,16 +3,21 @@ from __future__ import print_function
 from __future__ import division
 import torch
 import time
-import copy
-from src.config import device, datasets, input_size, computer
+import src.config as config
+from src.config import device, datasets, input_size, computer, patience_decay
 import os
 import cv2
 from src import utils
 from src.opt import opt
 from apex import amp
+from src.utils import warm_up_lr, lr_decay, EarlyStopping
+import shutil
 
 record_num = 3
 label_dict = datasets[opt.dataset]
+class_nums = len(label_dict)
+warm_up_epoch = max(config.warm_up.keys())
+
 
 
 def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_inception=False, model_save_path="./"):
@@ -24,20 +29,23 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_incept
     val_acc_history, train_acc_history, val_loss_history, train_loss_history = [], [], [], []
     train_acc, val_acc, train_loss, val_loss, best_epoch = 0, 0, float("inf"), float("inf"), 0
     epoch_ls = list(range(num_epochs))
+    early_stopping = EarlyStopping(patience=opt.patience, verbose=True)
 
-
+    decay, decay_epoch = 0, []
     log_writer = open(log_save_path, "w")
     log_writer.write(cmd)
     log_writer.write("\n")
     lr = opt.LR
 
     for epoch in range(num_epochs):
-        writer.add_scalar("lr", lr, epoch)
         epoch_start_time = time.time()
         print('Epoch {}/{}'.format(epoch, num_epochs - 1))
         print('-' * 20)
         log_writer.write('Epoch {}/{}\n'.format(epoch, num_epochs - 1))
         log_writer.write('-' * 10 + "\n")
+
+        writer.add_scalar("lr", lr, epoch)
+        print("Current lr is {}".format(lr))
 
         for name, param in model.named_parameters():
             writer.add_histogram(
@@ -61,7 +69,7 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_incept
                 inputs = inputs.to(device)
                 labels = labels.to(device)
 
-                optimizer, lr = utils.adjust_lr(optimizer, epoch, opt.epoch)
+                # optimizer, lr = utils.adjust_lr(optimizer, epoch, opt.epoch)
                 optimizer.zero_grad()
 
                 with torch.set_grad_enabled(phase == 'train'):
@@ -121,7 +129,9 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_incept
 
                 # writer.add_image("pred_image_for_epoch{}".format(epoch), images[1:, :, :, :])
                 if epoch_acc > val_acc:
-                    torch.save(model.state_dict(), os.path.join(model_save_path, "{}_best.pth".format(opt.expID)))
+                    torch.save(model.state_dict(),
+                               os.path.join(model_save_path, "{}_{}_{}cls_best.pth".format(
+                                   opt.expID, opt.backbone, class_nums)))
                     val_acc = epoch_acc
                     best_epoch = epoch
 
@@ -133,11 +143,32 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_incept
                 writer.add_scalar("scalar/train_acc", epoch_acc, epoch)
                 writer.add_scalar("Scalar/train_loss", epoch_loss, epoch)
 
+        if epoch < warm_up_epoch:
+            optimizer, lr = warm_up_lr(optimizer, epoch)
+        elif epoch == warm_up_epoch:
+            lr = opt.LR
+            early_stopping(val_acc)
+        else:
+            early_stopping(val_acc)
+            if early_stopping.early_stop:
+                optimizer, lr = lr_decay(optimizer, lr)
+                decay += 1
+                torch.save(
+                    model.state_dict(), os.path.join(model_save_path, "{}_{}_{}_decay{}.pth".
+                                                     format(opt.expID, opt.backbone, epoch, decay)))
+                shutil.copy(os.path.join(model_save_path, "{}_{}_{}cls_best.pth".format(
+                                   opt.expID, opt.backbone, class_nums)),
+                            os.path.join(model_save_path, "{}_{}_{}cls_decay{}_best.pth".format(
+                                   opt.expID, opt.backbone, decay, class_nums)))
+                decay_epoch.append(epoch)
+                early_stopping.reset(int(opt.patience * patience_decay[decay]))
+
+
         epoch_time_cost = time.time() - epoch_start_time
         print("epoch complete in {:.0f}m {:.0f}s".format(epoch_time_cost // 60, epoch_time_cost % 60))
         log_writer.write(
             "epoch complete in {:.0f}m {:.0f}s\n".format(epoch_time_cost // 60, epoch_time_cost % 60))
-        torch.save(opt, '{}/option.pkl'.format(model_save_path))
+        torch.save(opt, '{}/option.pth'.format(model_save_path))
 
     time_elapsed = time.time() - since
     print('Training complete in {:.0f}m {:.0f}s'.format(time_elapsed // 60, time_elapsed % 60))
@@ -163,10 +194,11 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_incept
     with open(result, "a+") as f:
         if not exist:
             f.write("id,backbone,params,flops,time,batch_size,optimizer,freeze_bn,freeze,sparse,sparse_decay,epoch_num,"
-                    "LR,weightDecay,loadModel,location, ,folder_name,train_acc,train_loss,val_acc,val_loss,best_epoch\n")
-        f.write("{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}, ,{},{},{},{},{},{}\n"
-                .format(opt.expID, opt.backbone, params, flops, inf_time,opt.batch, opt.optMethod,  opt.freeze_bn,
+                    "LR,weightDecay,loadModel,location, ,folder_name,train_acc,train_loss,val_acc,val_loss,best_epoch,"
+                    "decay1,decay2,decay3\n")
+        f.write("{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}, ,{},{},{},{},{},{},{},{},{}\n"
+                .format(opt.expID, opt.backbone, params, flops, inf_time, opt.batch, opt.optMethod,  opt.freeze_bn,
                         opt.freeze, opt.sparse_s, opt.sparse_decay, opt.epoch, opt.LR, opt.weightDecay, opt.loadModel,
-                        computer,
-                        os.path.join(opt.expFolder, opt.expID), train_acc, train_loss, val_acc, val_loss, best_epoch))
+                        computer, os.path.join(opt.expFolder, opt.expID), train_acc, train_loss, val_acc, val_loss,
+                        best_epoch, decay_epoch[0], decay_epoch[1], decay_epoch[2]))
 
