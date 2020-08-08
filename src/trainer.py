@@ -219,12 +219,12 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_incept
         if not exist:
             title_str = "id,backbone,params,flops,time,batch_size,optimizer,freeze_bn,freeze,sparse,sparse_decay," \
                         "epoch_num,LR,weightDecay,loadModel,location, ,folder_name,train_acc,train_loss,val_acc," \
-                        "val_loss,best_epoch\n"
+                        "val_loss,best_epoch,total_epoch\n"
             title_str = write_decay_title(len(decay_epoch), title_str)
             f.write(title_str)
         info_str = "{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}, ,{},{},{},{},{},{}\n".format(
             opt.expID, opt.backbone, params, flops, inf_time, opt.batch, opt.optMethod,  opt.freeze_bn, opt.freeze,
             opt.sparse_s, opt.sparse_decay, opt.epoch, opt.LR, opt.weightDecay, opt.loadModel, computer,
-            os.path.join(opt.expFolder, opt.expID), train_acc, train_loss, val_acc, val_loss, best_epoch)
+            os.path.join(opt.expFolder, opt.expID), train_acc, train_loss, val_acc, val_loss, best_epoch, epoch)
         info_str = write_decay_info(decay_epoch, info_str)
         f.write(info_str)
