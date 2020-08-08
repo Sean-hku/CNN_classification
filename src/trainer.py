@@ -13,6 +13,7 @@ from apex import amp
 import copy
 from src.utils import warm_up_lr, lr_decay, EarlyStopping, write_decay_title, write_decay_info
 import shutil
+import csv
 
 record_num = 3
 label_dict = datasets[opt.dataset]
@@ -39,17 +40,21 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_incept
     log_writer.write("\n")
     lr = opt.LR
 
+    train_log_name = log_save_path.replace("log.txt", "train_log.csv")
+    train_log = open(train_log_name, "w", newline="")
+    csv_writer = csv.writer(train_log)
+    csv_writer.writerow(["epoch", "lr", " ", "train_loss", "val_loss", "train_acc", "val_acc"])
+
     for epoch in range(num_epochs):
+        log_tmp = [epoch]
 
         if decay == opt.lr_decay_time:
-            print("Training finished at epoch {}".format(epoch))
             stop = True
-
         for epo, ac in config.bad_epochs.items():
             if epoch == epo and val_acc < ac:
                 stop = True
-
         if stop:
+            print("Training finished at epoch {}".format(epoch))
             break
 
         if epoch < warm_up_epoch:
@@ -72,6 +77,8 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_incept
                 decay_epoch.append(epoch)
                 model = best_weight
                 early_stopping.reset(int(opt.patience * patience_decay[decay]))
+        log_tmp.append(lr)
+        log_tmp.append("")
 
         epoch_start_time = time.time()
         print('Epoch {}/{}'.format(epoch, num_epochs - 1))
@@ -140,7 +147,8 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_incept
             print('{} Loss: {:.4f} Acc: {:.4f}'.format(phase, epoch_loss, epoch_acc))
             log_writer.write('{} Loss: {:.4f} Acc: {:.4f}\n'.format(phase, epoch_loss, epoch_acc))
 
-            # deep copy the model
+            log_tmp.append(epoch_acc)
+            log_tmp.append(epoch_loss)
 
             if phase == 'val':
                 val_loss_history.append(epoch_loss)
@@ -158,9 +166,10 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_incept
                     # images = torch.cat((images, torch.unsqueeze(tb_img, 0)), 0)
                     writer.add_image("pred_image_for_epoch{}".format(epoch), tb_img, epoch)
 
-                if epoch % opt.save_interval == 0:
+                if epoch % opt.save_interval == 0 and epoch != 0:
                     torch.save(model.state_dict(),
-                               os.path.join(model_save_path, "{}_{}_{}.pth".format(opt.expID, opt.backbone,epoch)))
+                               os.path.join(model_save_path, "{}_{}_{}cls_{}.pth".format(
+                                   opt.expID, opt.backbone, class_nums, epoch)))
 
                 # writer.add_image("pred_image_for_epoch{}".format(epoch), images[1:, :, :, :])
                 if epoch_acc > val_acc:
@@ -185,6 +194,7 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_incept
         log_writer.write(
             "epoch complete in {:.0f}m {:.0f}s\n".format(epoch_time_cost // 60, epoch_time_cost % 60))
         torch.save(opt, '{}/option.pth'.format(model_save_path))
+        csv_writer.writerow(log_tmp)
 
     time_elapsed = time.time() - since
     print('Training complete in {:.0f}m {:.0f}s'.format(time_elapsed // 60, time_elapsed % 60))
@@ -192,11 +202,9 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_incept
 
     log_writer.write('Training complete in {:.0f}m {:.0f}s\n'.format(time_elapsed // 60, time_elapsed % 60))
     log_writer.write('Best val Acc: {:.4f}\n'.format(val_acc))
-    # log_writer.write('Best test Acc: {:.4f}\n'.format(max(test_acc_history)))
-
     log_writer.close()
 
-    utils.draw_graph(epoch_ls, train_loss_history, val_loss_history, train_acc_history, train_loss_history, log_dir)
+    utils.draw_graph(epoch_ls, train_loss_history, val_loss_history, train_acc_history, val_acc_history, log_dir)
     flops = utils.print_model_param_flops(model)
     print("FLOPs of current model is {}".format(flops))
     params = utils.print_model_param_nums(model)
