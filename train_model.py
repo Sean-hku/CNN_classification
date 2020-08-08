@@ -48,7 +48,7 @@ if __name__ == "__main__":
         model = CNNModel(class_nums, backbone, feature_extract).model.to(device)
 
     params_to_update = model.parameters()
-    print("Params to learn:")
+    # print("Params to learn:")
 
     if opt.loadModel:
         model_path = os.path.join("weight/pre_train_model/%s.pth" % backbone)
@@ -75,7 +75,7 @@ if __name__ == "__main__":
         layers += 1
         if param.requires_grad:
             params_to_update.append(param)
-            print("\t", name)
+            # print("\t", name)
 
     print("Training {} layers out of {}".format(len(params_to_update), layers))
 

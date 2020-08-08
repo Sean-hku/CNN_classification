@@ -48,15 +48,6 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_incept
     for epoch in range(num_epochs):
         log_tmp = [epoch]
 
-        if decay > opt.lr_decay_time:
-            stop = True
-        for epo, ac in config.bad_epochs.items():
-            if epoch == epo and val_acc < ac:
-                stop = True
-        if stop:
-            print("Training finished at epoch {}".format(epoch))
-            break
-
         if epoch < warm_up_epoch:
             optimizer, lr = warm_up_lr(optimizer, epoch)
         elif epoch == warm_up_epoch:
@@ -196,6 +187,16 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_incept
         torch.save(opt, '{}/option.pth'.format(model_save_path))
         csv_writer.writerow(log_tmp)
 
+        if decay > opt.lr_decay_time:
+            stop = True
+        for epo, ac in config.bad_epochs.items():
+            if epoch == epo and val_acc < ac:
+                stop = True
+        if stop:
+            print("Training finished at epoch {}".format(epoch))
+            break
+
+
     time_elapsed = time.time() - since
     print('Training complete in {:.0f}m {:.0f}s'.format(time_elapsed // 60, time_elapsed % 60))
     print('Best val Acc: {:.4f}'.format(val_acc))
@@ -213,7 +214,7 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_incept
     print("Inference time is {}".format(inf_time))
 
     os.makedirs("result", exist_ok=True)
-    result = os.path.join("result", "{}_result.txt".format(opt.expFolder))
+    result = os.path.join("result", "{}_result.csv".format(opt.expFolder))
     exist = os.path.exists(result)
     with open(result, "a+") as f:
         if not exist:
