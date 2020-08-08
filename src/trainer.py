@@ -10,6 +10,7 @@ import cv2
 from src import utils
 from src.opt import opt
 from apex import amp
+import copy
 from src.utils import warm_up_lr, lr_decay, EarlyStopping
 import shutil
 
@@ -19,25 +20,59 @@ class_nums = len(label_dict)
 warm_up_epoch = max(config.warm_up.keys())
 
 
-
 def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_inception=False, model_save_path="./"):
     num_epochs = opt.epoch
     log_dir = os.path.join(model_save_path, opt.expID)
     os.makedirs(log_dir, exist_ok=True)
     log_save_path = os.path.join(log_dir, "log.txt")
     since = time.time()
+    best_weight = copy.deepcopy(model)
     val_acc_history, train_acc_history, val_loss_history, train_loss_history = [], [], [], []
-    train_acc, val_acc, train_loss, val_loss, best_epoch = 0, 0, float("inf"), float("inf"), 0
+    train_acc, val_acc, train_loss, val_loss, best_epoch, epoch_acc = 0, 0, float("inf"), float("inf"), 0, 0
     epoch_ls = list(range(num_epochs))
     early_stopping = EarlyStopping(patience=opt.patience, verbose=True)
 
     decay, decay_epoch = 0, []
+    stop = False
     log_writer = open(log_save_path, "w")
     log_writer.write(cmd)
     log_writer.write("\n")
     lr = opt.LR
 
     for epoch in range(num_epochs):
+
+        if decay == opt.lr_decay_time:
+            print("Training finished at epoch {}".format(epoch))
+            stop = True
+
+        for epo, ac in config.bad_epochs.items():
+            if epoch == epo and val_acc < ac:
+                stop = True
+
+        if stop:
+            break
+
+        if epoch < warm_up_epoch:
+            optimizer, lr = warm_up_lr(optimizer, epoch)
+        elif epoch == warm_up_epoch:
+            lr = opt.LR
+            early_stopping(epoch_acc)
+        else:
+            early_stopping(epoch_acc)
+            if early_stopping.early_stop:
+                optimizer, lr = lr_decay(optimizer, lr)
+                decay += 1
+                torch.save(
+                    model.state_dict(), os.path.join(model_save_path, "{}_{}_{}_decay{}.pth".
+                                                     format(opt.expID, opt.backbone, epoch, decay)))
+                shutil.copy(os.path.join(model_save_path, "{}_{}_{}cls_best.pth".format(
+                                   opt.expID, opt.backbone, class_nums)),
+                            os.path.join(model_save_path, "{}_{}_{}cls_decay{}_best.pth".format(
+                                   opt.expID, opt.backbone, decay, class_nums)))
+                decay_epoch.append(epoch)
+                model = best_weight
+                early_stopping.reset(int(opt.patience * patience_decay[decay]))
+
         epoch_start_time = time.time()
         print('Epoch {}/{}'.format(epoch, num_epochs - 1))
         print('-' * 20)
@@ -134,6 +169,7 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_incept
                                    opt.expID, opt.backbone, class_nums)))
                     val_acc = epoch_acc
                     best_epoch = epoch
+                    best_weight = copy.deepcopy(model)
 
             else:
                 train_acc_history.append(epoch_acc)
@@ -142,26 +178,6 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_incept
                 train_loss = epoch_loss if epoch_loss < train_loss else train_loss
                 writer.add_scalar("scalar/train_acc", epoch_acc, epoch)
                 writer.add_scalar("Scalar/train_loss", epoch_loss, epoch)
-
-        if epoch < warm_up_epoch:
-            optimizer, lr = warm_up_lr(optimizer, epoch)
-        elif epoch == warm_up_epoch:
-            lr = opt.LR
-            early_stopping(val_acc)
-        else:
-            early_stopping(val_acc)
-            if early_stopping.early_stop:
-                optimizer, lr = lr_decay(optimizer, lr)
-                decay += 1
-                torch.save(
-                    model.state_dict(), os.path.join(model_save_path, "{}_{}_{}_decay{}.pth".
-                                                     format(opt.expID, opt.backbone, epoch, decay)))
-                shutil.copy(os.path.join(model_save_path, "{}_{}_{}cls_best.pth".format(
-                                   opt.expID, opt.backbone, class_nums)),
-                            os.path.join(model_save_path, "{}_{}_{}cls_decay{}_best.pth".format(
-                                   opt.expID, opt.backbone, decay, class_nums)))
-                decay_epoch.append(epoch)
-                early_stopping.reset(int(opt.patience * patience_decay[decay]))
 
 
         epoch_time_cost = time.time() - epoch_start_time
