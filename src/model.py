@@ -1,11 +1,8 @@
 # -*- coding:utf-8 -*-
 from __future__ import print_function
-import torch
 import torch.nn as nn
 import torchvision.models as models
 from torch.nn import functional as F
-from src.config import device
-import os
 
 
 class LeNet(nn.Module):

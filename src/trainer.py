@@ -220,5 +220,3 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_incept
             os.path.join(opt.expFolder, opt.expID), train_acc, train_loss, val_acc, val_loss, best_epoch)
         info_str = write_decay_info(decay_epoch, info_str)
         f.write(info_str)
-
-
