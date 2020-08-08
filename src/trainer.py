@@ -29,7 +29,7 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_incept
     best_weight = copy.deepcopy(model)
     val_acc_history, train_acc_history, val_loss_history, train_loss_history = [], [], [], []
     train_acc, val_acc, train_loss, val_loss, best_epoch, epoch_acc = 0, 0, float("inf"), float("inf"), 0, 0
-    epoch_ls = list(range(num_epochs))
+    epoch_ls = []
     early_stopping = EarlyStopping(patience=opt.patience, verbose=True)
 
     decay, decay_epoch = 0, []
@@ -179,7 +179,7 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_incept
                 writer.add_scalar("scalar/train_acc", epoch_acc, epoch)
                 writer.add_scalar("Scalar/train_loss", epoch_loss, epoch)
 
-
+        epoch_ls.append(epoch)
         epoch_time_cost = time.time() - epoch_start_time
         print("epoch complete in {:.0f}m {:.0f}s".format(epoch_time_cost // 60, epoch_time_cost % 60))
         log_writer.write(

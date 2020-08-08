@@ -50,7 +50,7 @@ parser.add_argument('--lr_decay_time', default=2, type=int,
                     help='epoch of lr decay')
 
 "----------------------------- Training options -----------------------------"
-parser.add_argument('--epoch', default=20, type=int,
+parser.add_argument('--epoch', default=30, type=int,
                     help='Total number to train')
 parser.add_argument('--val_ratio', default=0.3, type=float,
                     help='validation percentage')
@@ -62,7 +62,7 @@ parser.add_argument('--valIters', default=0, type=int,
                     help='Total valid iters')
 parser.add_argument('--num_worker', default=5, type=int,
                     help='num worker of train')
-parser.add_argument('--save_interval', default=1, type=int,
+parser.add_argument('--save_interval', default=8, type=int,
                     help='interval')
 
 opt = parser.parse_args()
