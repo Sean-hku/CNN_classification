@@ -155,7 +155,7 @@ class CNNModel(object):
             if opt.loadModel:
                 model_path = os.path.join("pre_train_model/%s.pth" % model_name)
                 self.model.load_state_dict(torch.load(model_path, map_location=device))
-            self.classifier = nn.Sequential(nn.Dropout(p=0.2, inplace=True),
+            self.model.classifier = nn.Sequential(nn.Dropout(p=0.2, inplace=True),
                                             nn.Linear(1280, num_classes))
         else:
             raise ValueError("Your pretrain model name is wrong!")
