@@ -215,7 +215,7 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_incept
     print("Inference time is {}".format(inf_time))
 
     os.makedirs("result", exist_ok=True)
-    result = os.path.join("result", "{}_result.csv".format(opt.expFolder))
+    result = os.path.join("result", "{}_result_{}.csv".format(opt.expFolder, computer))
     exist = os.path.exists(result)
     with open(result, "a+") as f:
         if not exist:
