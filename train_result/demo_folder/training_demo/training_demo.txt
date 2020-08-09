@@ -1,0 +1,2 @@
+'CUDA_VISIBLE_DEVICES= python train_model.py --dataset ceiling --backbone mobilenet --batch 32 --epoch 20 --LR 1.00E-03 --expFolder ceiling_2cls --val_ratio 0.2 --expID 1'
+'CUDA_VISIBLE_DEVICES= python train_model.py --dataset ceiling --backbone mnasnet --batch 32 --epoch 20 --LR 1.00E-03 --expFolder ceiling_2cls --val_ratio 0.2 --expID 2'
