@@ -11,7 +11,8 @@ from src import utils
 from src.opt import opt
 from apex import amp
 import copy
-from src.utils import warm_up_lr, lr_decay, EarlyStopping, write_decay_title, write_decay_info
+from src.utils import warm_up_lr, lr_decay, EarlyStopping, write_decay_title, write_decay_info, log_of_each_class, \
+    write_csv_title, csv_cls_num
 import shutil
 import csv
 
@@ -43,7 +44,7 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_incept
     train_log_name = log_save_path.replace("log.txt", "train_log.csv")
     train_log = open(train_log_name, "w", newline="")
     csv_writer = csv.writer(train_log)
-    csv_writer.writerow(["epoch", "lr", " ", "train_acc", "train_loss", "val_acc", "val_loss"])
+    csv_writer.writerow(write_csv_title())
 
     for epoch in range(num_epochs):
         log_tmp = [epoch]
@@ -97,6 +98,10 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_incept
 
         # Each epoch has a training and validation phase
         for phase in ['train', 'val']:
+            cls_correct = [0] * class_nums
+            cls_sum = [0] * class_nums
+            cls_acc = [0] * class_nums
+
             print(phase)
             if phase == 'train':
                 model.train()  # Set model to training mode
@@ -128,6 +133,12 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_incept
 
                     _, preds = torch.max(outputs, 1)
 
+                    right = preds == labels
+                    for r, l in zip(right, labels):
+                        cls_sum[l] += 1
+                        if r:
+                            cls_correct[l] += 1
+
                     if phase == 'train':
                         if opt.mix_precision:
                             with amp.scale_loss(loss, optimizer) as scaled_loss:
@@ -143,16 +154,19 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_incept
                     batch_start_time = time.time()
                 batch_num += 1
 
+            for idx, (s, c) in enumerate(zip(cls_sum, cls_correct)):
+                cls_acc[idx] = c / s
+
             epoch_loss = running_loss / len(dataloaders[phase].dataset)
             epoch_acc = running_corrects.double() / len(dataloaders[phase].dataset)
 
             print('{} Loss: {:.4f} Acc: {:.4f}'.format(phase, epoch_loss, epoch_acc))
             log_writer.write('{} Loss: {:.4f} Acc: {:.4f}\n'.format(phase, epoch_loss, epoch_acc))
 
-            log_tmp.append(epoch_acc.tolist())
-            log_tmp.append(epoch_loss)
-
             if phase == 'val':
+                log_tmp.insert(5, epoch_acc.tolist())
+                log_tmp.insert(6, epoch_loss)
+
                 val_loss_history.append(epoch_loss)
                 val_acc_history.append(epoch_acc)
                 val_loss = epoch_loss if epoch_loss < val_loss else val_loss
@@ -162,7 +176,7 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_incept
                 imgnames, pds = names[:3], [label_dict[i] for i in preds[:record_num].tolist()]
                 for idx, (img_path, pd) in enumerate(zip(imgnames, pds)):
                     img = cv2.imread(img_path)
-                    img = cv2.putText(img, pd,(20, 50),cv2.FONT_HERSHEY_PLAIN, 2, (0, 255, 0), 2)
+                    img = cv2.putText(img, pd, (20, 50), cv2.FONT_HERSHEY_PLAIN, 2, (0, 255, 0), 2)
                     #cv2.imwrite("tmp/{}_{}.jpg".format(epoch, idx), img)
                     tb_img = utils.image2tensorboard(img)
                     # images = torch.cat((images, torch.unsqueeze(tb_img, 0)), 0)
@@ -183,12 +197,15 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_incept
                     best_weight = copy.deepcopy(model)
 
             else:
+                log_tmp.append(epoch_acc.tolist())
+                log_tmp.append(epoch_loss)
                 train_acc_history.append(epoch_acc)
                 train_loss_history.append(epoch_loss)
                 train_acc = epoch_acc if epoch_acc > train_acc else train_acc
                 train_loss = epoch_loss if epoch_loss < train_loss else train_loss
                 writer.add_scalar("scalar/train_acc", epoch_acc, epoch)
                 writer.add_scalar("Scalar/train_loss", epoch_loss, epoch)
+            log_tmp += log_of_each_class(cls_acc)
 
         epoch_ls.append(epoch)
         epoch_time_cost = time.time() - epoch_start_time
@@ -198,6 +215,8 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_incept
         torch.save(opt, '{}/option.pth'.format(model_save_path))
         csv_writer.writerow(log_tmp)
 
+    csv_writer.writerow([])
+    csv_writer.writerow(csv_cls_num(dataloaders))
     time_elapsed = time.time() - since
     print('Training complete in {:.0f}m {:.0f}s'.format(time_elapsed // 60, time_elapsed % 60))
     print('Best val Acc: {:.4f}'.format(val_acc))

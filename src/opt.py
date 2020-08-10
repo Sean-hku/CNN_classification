@@ -24,7 +24,7 @@ parser.add_argument('--loadModel', default=None, type=str,
                     help='Provide full path to a previously trained model')
 
 "----------------------------- Hyperparameter options -----------------------------"
-parser.add_argument('--LR', default=5e-3, type=float,
+parser.add_argument('--LR', default=5e-4, type=float,
                     help='Learning rate')
 parser.add_argument('--momentum', default=0, type=float,
                     help='Momentum')

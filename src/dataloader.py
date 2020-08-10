@@ -6,14 +6,17 @@ from src.utils import image_normalize
 from tools.adjust_val import ImgAdjuster
 import os
 from src.opt import opt
+from collections import Counter
 
 
 class MyDataset(Dataset):
     def __init__(self, img_path, image_label_dict, image_processor=image_normalize, size=224):
         img_dir_name, img_dir_label, self.img_name, self.img_label = [], [], [], []
         self.size = size
+        self.label = []
 
         for idx, cls in enumerate(image_label_dict):
+            self.label.append(cls)
             img_dir_name.append(os.path.join(img_path, cls))
             img_dir_label.append(idx)
 
@@ -24,6 +27,7 @@ class MyDataset(Dataset):
                 self.img_label.append(dir_label)
 
         self.image_processor = image_processor
+        self.label_nums = Counter(self.img_label)
 
     def __len__(self):
         return len(self.img_name)

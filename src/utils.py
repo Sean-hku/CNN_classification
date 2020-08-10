@@ -307,3 +307,38 @@ class EarlyStopping:
             print(f'Validation loss decreased ({self.val_loss_min:.6f} --> {val_loss:.6f}).  Saving model ...')
         torch.save(model.state_dict(), self.path)
         self.val_loss_min = val_loss
+
+
+def log_of_each_class(acc):
+    tmp = [" "]
+    for idx, a in enumerate(acc):
+        tmp.append("{}".format(a))
+    return tmp
+
+
+def write_csv_title():
+    title = ["epoch", "lr", " ", "train_loss", "train_acc", "val_loss", "val_acc", " "]
+    title += csv_body_part("train")
+    title += csv_body_part("val")
+    return title
+
+
+def csv_body_part(phase):
+    from src.config import datasets
+    labels, ls = datasets[opt.dataset], []
+    for label in labels:
+        ls.append(phase+"_"+label)
+    ls.append(" ")
+    return ls
+
+
+def csv_cls_num(dl):
+    tmp = [""] * 6 + ["Total num: "]
+    for phase in ["train", "val"]:
+        tmp.append(" ")
+        ls = []
+        loader = dl[phase]
+        for k, v in loader.dataset.label_nums.items():
+            ls.append(v)
+        tmp += ls
+    return tmp
