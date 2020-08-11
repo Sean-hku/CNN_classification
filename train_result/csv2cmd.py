@@ -13,9 +13,9 @@ data = [line for line in csv_reader_lines]
 opt = [item for item in data[0]]
 
 if include_cuda:
-    begin = "'CUDA_VISIBLE_DEVICES= python train_opt.py "
+    begin = "'CUDA_VISIBLE_DEVICES= python train_model.py "
 else:
-    begin = "'python train_opt.py "
+    begin = "'python train_model.py "
 
 
 def change_name(name):
@@ -40,8 +40,8 @@ for idx, mdl in enumerate(data[1:]):
             tmp += " "
             valid = True
 
-    tmp += "--expFolder {}-{} ".format(task_folder, batch_folder)
-    tmp += "--expID {}".format(idx+1)
+    tmp += "--expFolder {}-{}".format(task_folder, batch_folder)
+    tmp += "\t--expID {}".format(idx+1)
     cmd = begin + tmp + "'\n"
     if valid:
         cmds.append(cmd)

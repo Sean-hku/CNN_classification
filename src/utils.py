@@ -317,7 +317,7 @@ def log_of_each_class(acc):
 
 
 def write_csv_title():
-    title = ["epoch", "lr", " ", "train_loss", "train_acc", "val_loss", "val_acc", " "]
+    title = ["epoch", "lr", " ", "train_acc", "train_loss", "val_acc", "val_loss", " "]
     title += csv_body_part("train")
     title += csv_body_part("val")
     return title

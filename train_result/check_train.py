@@ -1,7 +1,8 @@
-from train_result.config import models_name
+from train_result.config import task_folder, batch_folder, folder_path
 import openpyxl
+import os
 
-model_txt = "{0}/{0}.txt".format(models_name)
+model_txt = os.path.join(folder_path, batch_folder + ".csv")
 
 models = []
 with open(model_txt, "r") as f:
@@ -13,10 +14,10 @@ with open(model_txt, "r") as f:
 
 # print(models)
 
-trained_folder = "{}/result/log_result".format(models_name)
+trained_folder = "../result/{}-{}".format(task_folder, batch_folder)
 
 import os
-file_trained = [int(file) for file in os.listdir(trained_folder)]
+file_trained = [int(file) for file in os.listdir(trained_folder) if len(file)<=4]
 
 # print(sorted(trained))
 rest_file = [item for item in models if item not in file_trained]
