@@ -3,7 +3,7 @@ import torch
 import src.config as config
 from torch.utils.data import Dataset
 from src.utils import image_normalize
-from tools.adjust_val import ImgAdjuster
+from tool.adjust_val import ImgAdjuster
 import os
 from src.opt import opt
 from collections import Counter

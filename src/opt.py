@@ -16,6 +16,8 @@ parser.add_argument('--nThreads', default=30, type=int,
                     help='Number of data loading threads')
 parser.add_argument('--dataset', default='ceiling', type=str,
                     help='Experiment folder')
+parser.add_argument('--classes', default=' ', type=str,
+                    help='Experiment folder')
 
 "----------------------------- Model options -----------------------------"
 parser.add_argument('--backbone', default="mobilenet", type=str,

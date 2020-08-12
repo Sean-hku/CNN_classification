@@ -18,6 +18,7 @@ import csv
 
 record_num = 3
 label_dict = datasets[opt.dataset]
+opt.classes = ",".join(label_dict)
 class_nums = len(label_dict)
 warm_up_epoch = max(config.warm_up.keys())
 
