@@ -60,19 +60,16 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_incept
             if early_stopping.early_stop:
                 optimizer, lr = lr_decay(optimizer, lr)
                 decay += 1
-                torch.save(
-                    model.state_dict(), os.path.join(model_save_path, "{}_{}_{}_decay{}.pth".
-                                                     format(opt.expID, opt.backbone, epoch, decay)))
-                shutil.copy(os.path.join(model_save_path, "{}_{}_{}cls_best.pth".format(
-                                   opt.expID, opt.backbone, class_nums)),
-                            os.path.join(model_save_path, "{}_{}_{}cls_decay{}_best.pth".format(
-                                   opt.expID, opt.backbone, class_nums, decay)))
+
                 model = best_weight
                 if decay > opt.lr_decay_time:
                     stop = True
                 else:
                     decay_epoch.append(epoch)
                     early_stopping.reset(int(opt.patience * patience_decay[decay]))
+                    torch.save(
+                        model.state_dict(), os.path.join(model_save_path, "{}_{}_{}_decay{}.pth".
+                                                         format(opt.expID, opt.backbone, epoch, decay)))
 
         for epo, ac in config.bad_epochs.items():
             if epoch == epo and val_acc < ac:
