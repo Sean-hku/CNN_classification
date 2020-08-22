@@ -77,7 +77,7 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_incept
 
     try:
         for epoch in range(num_epochs):
-            log_tmp = [epoch]
+            log_tmp = [opt.expID, epoch]
 
             if epoch < warm_up_epoch:
                 optimizer, lr = warm_up_lr(optimizer, epoch)
@@ -262,8 +262,8 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_incept
             info_str = "{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}, ,{},{},{},{},{},{},{},{}\n".format(
                 opt.expID, opt.backbone, params, flops, inf_time, opt.batch, opt.optMethod,  opt.freeze_bn, opt.freeze,
                 opt.sparse_s, opt.sparse_decay, opt.epoch, opt.LR, opt.weightDecay, opt.loadModel, computer,
-                os.path.join(opt.expFolder, opt.expID), train_acc, train_loss, val_acc, val_loss, time_elapsed, best_epoch,
-                epoch)
+                os.path.join(opt.expFolder, opt.expID), time_elapsed, train_acc, train_loss, val_acc, val_loss,
+                best_epoch, epoch)
             info_str = write_decay_info(decay_epoch, info_str)
             f.write(info_str)
 
@@ -286,23 +286,40 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_incept
             f.write(info_str)
 
     except IOError:
-        print("Gradient flow!")
+        print("Error occurs when reading files!")
         time_elapsed = time.time() - since
-        print('Training complete in {:.0f}m {:.0f}s'.format(time_elapsed // 60, time_elapsed % 60))
 
         with open(result, "a+") as f:
             if not exist:
                 title_str = "id,backbone,params,flops,time,batch_size,optimizer,freeze_bn,freeze,sparse,sparse_decay," \
-                            "epoch_num,LR,weightDecay,loadModel,location, ,folder_name,train_acc,train_loss,val_acc," \
-                            "val_loss,training_time, best_epoch,total_epoch\n"
+                            "epoch_num,LR,weightDecay,loadModel,location, ,folder_name,training_time,train_acc," \
+                            "train_loss,val_acc,val_loss,best_epoch,total_epoch\n"
                 title_str = write_decay_title(len(decay_epoch), title_str)
                 f.write(title_str)
-            info_str = "{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}, ,{},{},{},{},{},{},{},{}\n".format(
+            info_str = "{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}, ,{},{}\n".format(
                 opt.expID, opt.backbone, params, flops, inf_time, opt.batch, opt.optMethod,  opt.freeze_bn, opt.freeze,
                 opt.sparse_s, opt.sparse_decay, opt.epoch, opt.LR, opt.weightDecay, opt.loadModel, computer,
-                os.path.join(opt.expFolder, opt.expID), "Gradient flow", "Gradient flow", "Gradient flow",
-                "Gradient flow", time_elapsed, best_epoch, epoch)
+                os.path.join(opt.expFolder, opt.expID), time_elapsed, "Error occurs when reading files")
             info_str = write_decay_info(decay_epoch, info_str)
             f.write(info_str)
+
+    except KeyboardInterrupt:
+        print("Process killed by someone!")
+        time_elapsed = time.time() - since
+
+        with open(result, "a+") as f:
+            if not exist:
+                title_str = "id,backbone,params,flops,time,batch_size,optimizer,freeze_bn,freeze,sparse,sparse_decay," \
+                            "epoch_num,LR,weightDecay,loadModel,location, ,folder_name,training_time,train_acc," \
+                            "train_loss,val_acc,val_loss,best_epoch,total_epoch\n"
+                title_str = write_decay_title(len(decay_epoch), title_str)
+                f.write(title_str)
+            info_str = "{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}, ,{},{}\n".format(
+                opt.expID, opt.backbone, params, flops, inf_time, opt.batch, opt.optMethod,  opt.freeze_bn, opt.freeze,
+                opt.sparse_s, opt.sparse_decay, opt.epoch, opt.LR, opt.weightDecay, opt.loadModel, computer,
+                os.path.join(opt.expFolder, opt.expID), time_elapsed, "Process killed by someone")
+            info_str = write_decay_info(decay_epoch, info_str)
+            f.write(info_str)
+
 
     print('Training complete in {:.0f}m {:.0f}s'.format(time_elapsed // 60, time_elapsed % 60))
