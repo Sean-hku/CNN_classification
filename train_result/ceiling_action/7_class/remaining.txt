@@ -1,0 +1,2 @@
+'CUDA_VISIBLE_DEVICES= python train_model.py --dataset ceiling --backbone squeezenet --batch 4 --optMethod rmsprop --freeze_bn True --freeze 0 --epoch 50 --LR 0.005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder ceiling_action-7_class	--expID 258'
+'CUDA_VISIBLE_DEVICES= python train_model.py --dataset ceiling --backbone squeezenet --batch 4 --optMethod rmsprop --freeze_bn True --freeze 0 --epoch 50 --LR 0.005 --weightDecay 1.00E-04 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder ceiling_action-7_class	--expID 270'

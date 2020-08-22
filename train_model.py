@@ -36,7 +36,6 @@ model_save_path = os.path.join("weight/{}/{}".format(opt.expFolder, modelID))
 os.makedirs(model_save_path, exist_ok=True)
 
 if __name__ == "__main__":
-    print(opt)
     cmd_ls = sys.argv[1:]
     cmd = utils.generate_cmd(cmd_ls)
     if "--freeze_bn False" in cmd:
@@ -48,11 +47,6 @@ if __name__ == "__main__":
         model = CNNModel(class_nums, backbone, feature_extract).model.to(device)
 
     params_to_update = model.parameters()
-    # print("Params to learn:")
-    #
-    # if opt.loadModel:
-    #     model_path = os.path.join("pre_train_model/%s.pth" % backbone)
-    #     model.load_state_dict(torch.load(model_path, map_location=device))
 
     if opt.freeze > 0 or opt.freeze_bn:
         try:
@@ -104,4 +98,4 @@ if __name__ == "__main__":
 
     train_model(model, data_loader.dataloaders_dict, criterion, optimizer_ft, cmd, writer, is_inception=is_inception,
                 model_save_path=model_save_path)
-
+    print("Model {} training finished".format(modelID))
