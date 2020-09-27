@@ -36,6 +36,8 @@ class Tester:
             name = "squeezenet"
         elif "mnasnet" in model_path:
             name = "mnasnet"
+        elif "LeNet" in model_path:
+            name = "LeNet"
         else:
             raise ValueError("Wrong name of pre-train model")
         return name
@@ -61,6 +63,9 @@ class Tester:
         cv2.imshow("Result", img)
         cv2.waitKey(0)
 
+    def to_onnx(self):
+        self.model.to_onnx()
+
 
 if __name__ == '__main__':
     model_pth = config.test_model_path
@@ -73,4 +78,5 @@ if __name__ == '__main__':
         pred = MI.test_pred(im)
         MI.show_img(im, pred)
         print("Prediction of {} is {}".format(img_name, pred))
+    MI.to_onnx()
 

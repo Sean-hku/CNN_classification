@@ -9,7 +9,7 @@ import os
 import cv2
 from src import utils
 from src.opt import opt
-from apex import amp
+# from apex import amp
 import copy
 from src.utils import warm_up_lr, lr_decay, EarlyStopping, write_decay_title, write_decay_info, log_of_each_class, \
     write_csv_title, csv_cls_num

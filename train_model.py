@@ -85,10 +85,13 @@ if __name__ == "__main__":
     writer = SummaryWriter('weight/{}/{}'.format(opt.expFolder, opt.expID), comment=cmd)
 
     is_inception = backbone == "inception"
-    if is_inception:
-        writer.add_graph(model, torch.rand(1, 3, 299, 299).to(device))
-    else:
-        writer.add_graph(model, torch.rand(1, 3, 224, 224).to(device))
+    try:
+        if is_inception:
+            writer.add_graph(model, torch.rand(1, 3, 299, 299).to(device))
+        else:
+            writer.add_graph(model, torch.rand(1, 3, 224, 224).to(device))
+    except:
+        pass
 
     if opt.mix_precision:
         m, optimizer = amp.initialize(model, optimizer_ft, opt_level="O1")

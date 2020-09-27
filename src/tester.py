@@ -1,17 +1,23 @@
 # -*- coding:utf-8 -*-
 from __future__ import print_function
 from src.config import device, input_size
-from src.model import CNNModel
+from src.model import CNNModel, LeNet
 import torch
 import numpy as np
 from torch import nn
 from src.utils import image_normalize
+import os
 
 
 class ModelInference(object):
     def __init__(self, class_nums, pre_train_name, model_path):
-        self.sport_model = CNNModel(class_nums, pre_train_name).model.to(device)
+        if "LeNet" not in pre_train_name:
+            self.sport_model = CNNModel(class_nums, pre_train_name).model.to(device)
+        else:
+            self.sport_model = LeNet(class_nums)
         self.sport_model.load_state_dict(torch.load(model_path, map_location=device))
+        if device != "cpu":
+            self.sport_model.cuda()
 
     def predict(self, img):
         img_tensor_list = []
@@ -24,9 +30,14 @@ class ModelInference(object):
 
     def __predict_image(self, image_batch_tensor):
         self.sport_model.eval()
-        image_batch_tensor = image_batch_tensor.cuda()
-        outputs = self.sport_model(image_batch_tensor)
+        self.image_batch_tensor = image_batch_tensor.cuda()
+        outputs = self.sport_model(self.image_batch_tensor)
         outputs_tensor = outputs.data
         m_softmax = nn.Softmax(dim=1)
         outputs_tensor = m_softmax(outputs_tensor).to("cpu")
         return np.asarray(outputs_tensor)
+
+    def to_onnx(self):
+
+        torch_out = torch.onnx.export(self.sport_model, self.image_batch_tensor, "catDog_LeNet.onnx", verbose=False,)
+#                                      input_names=in_names, output_names=out_names)
