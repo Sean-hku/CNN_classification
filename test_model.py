@@ -61,10 +61,13 @@ class Tester:
         font = cv2.FONT_HERSHEY_SIMPLEX
         cv2.putText(img, pred, (50, 50), font, 2, colors[pred], 3)
         cv2.imshow("Result", img)
-        cv2.waitKey(0)
+        cv2.waitKey(1)
 
     def to_onnx(self):
         self.model.to_onnx()
+
+    def to_libtorch(self):
+        self.model.to_libtorch()
 
 
 if __name__ == '__main__':
@@ -78,5 +81,6 @@ if __name__ == '__main__':
         pred = MI.test_pred(im)
         MI.show_img(im, pred)
         print("Prediction of {} is {}".format(img_name, pred))
-    MI.to_onnx()
+    MI.to_libtorch()
+    # MI.to_onnx()
 

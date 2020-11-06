@@ -12,12 +12,12 @@ import os
 class ModelInference(object):
     def __init__(self, class_nums, pre_train_name, model_path):
         if "LeNet" not in pre_train_name:
-            self.sport_model = CNNModel(class_nums, pre_train_name).model.to(device)
+            self.CNN_model = CNNModel(class_nums, pre_train_name).model.to(device)
         else:
-            self.sport_model = LeNet(class_nums)
-        self.sport_model.load_state_dict(torch.load(model_path, map_location=device))
+            self.CNN_model = LeNet(class_nums)
+        self.CNN_model.load_state_dict(torch.load(model_path, map_location=device))
         if device != "cpu":
-            self.sport_model.cuda()
+            self.CNN_model.cuda()
 
     def predict(self, img):
         img_tensor_list = []
@@ -29,15 +29,20 @@ class ModelInference(object):
             return res_array
 
     def __predict_image(self, image_batch_tensor):
-        self.sport_model.eval()
+        self.CNN_model.eval()
         self.image_batch_tensor = image_batch_tensor.cuda()
-        outputs = self.sport_model(self.image_batch_tensor)
+        outputs = self.CNN_model(self.image_batch_tensor)
         outputs_tensor = outputs.data
         m_softmax = nn.Softmax(dim=1)
         outputs_tensor = m_softmax(outputs_tensor).to("cpu")
         return np.asarray(outputs_tensor)
 
     def to_onnx(self):
-
-        torch_out = torch.onnx.export(self.sport_model, self.image_batch_tensor, "catDog_LeNet.onnx", verbose=False,)
+        torch_out = torch.onnx.export(self.CNN_model, self.image_batch_tensor, "drown_mob.onnx", verbose=False,)
 #                                      input_names=in_names, output_names=out_names)
+
+    def to_libtorch(self):
+        example = torch.rand(2, 3, 224, 224).cuda()
+        self.CNN_model.eval()
+        traced_model = torch.jit.trace(self.CNN_model, example)
+        traced_model.save("drown_mob.pt")
