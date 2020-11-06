@@ -5,8 +5,8 @@ with open("{}.txt".format(os.path.join(task_folder, batch_folder, batch_folder))
     lines = [line for line in f.readlines() if line != "\n"]
 
 train_begin, train_end = 258, 258
-CUDA = -1
-target_cmds = lines[train_begin-1: train_end]
+CUDA = ''
+target_cmds = lines[:]
 # target_cmds = [cmd for cmd in target_cmds if cmd != ""]
 
 if CUDA != -1:
