@@ -38,7 +38,6 @@ class ModelInference(object):
         print(outputs)
         return np.asarray(outputs_tensor)
 
-
     def to_onnx(self, name="model.onnx"):
         torch_out = torch.onnx.export(self.CNN_model, self.image_batch_tensor, name, verbose=False,)
 #                                      input_names=in_names, output_names=out_names)

@@ -3,9 +3,11 @@ from src.dataloader import DataLoader
 from src.tester import ModelInference
 import torch
 import matplotlib.pyplot as plt
-import  numpy as np
+import numpy as np
 from sklearn.metrics import precision_recall_curve
 from tqdm import tqdm
+
+
 def get_pretrain(model_path):
     if "_resnet18" in model_path:
         name = "resnet18"
@@ -34,6 +36,8 @@ def get_pretrain(model_path):
     else:
         raise ValueError("Wrong name of pre-train model")
     return name
+
+
 def test():
     # with torch.no_grad():
     drown_ls = torch.FloatTensor([]).to("cuda:0")
@@ -52,7 +56,7 @@ def test():
         labels = labels.to("cuda:0")
         pre_name = get_pretrain(model_path)
         model = ModelInference(num_classes, pre_name, model_path)
-        outputs = model.sport_model(inputs)
+        outputs = model.CNN_model(inputs)
         _, preds = torch.max(outputs, 1)
         # print(torch.sigmoid(outputs))
         drown = torch.index_select(torch.sigmoid(outputs),1,torch.tensor([1]).to("cuda:0"))
@@ -72,5 +76,7 @@ def test():
     plt.figure(1)
     plt.plot(precision, recall)
     plt.show()
+
+
 if __name__ == '__main__':
     test()

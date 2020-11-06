@@ -9,7 +9,7 @@ colors = {"cat": (0,255,255), "dog":(255,255,0)}
 
 
 class Tester:
-    def __init__(self, model_path,conf):
+    def __init__(self, model_path, conf=0.5):
         self.pre_name = self.__get_pretrain(model_path)
         self.model = ModelInference(num_classes, self.pre_name, model_path)
         self.conf = conf
@@ -78,11 +78,11 @@ class Tester:
 if __name__ == '__main__':
     model_pth = config.test_model_path
     img_path = config.test_img
-    batch_size = 16
-    data_loader = DataLoader(img_path, batch_size)
-    for names, inputs, labels in data_loader.dataloaders_dict['val']:
-        inputs = inputs.to("cuda:0")
-        labels = labels.to("cuda:0")
+    # batch_size = 16
+    # data_loader = DataLoader(img_path, batch_size)
+    # for names, inputs, labels in data_loader.dataloaders_dict['val']:
+    #     inputs = inputs.to("cuda:0")
+    #     labels = labels.to("cuda:0")
     MI = Tester(model_pth)
     # max_idx = MI.test_idx(cv2.imread(img_path))
     # print(max_idx)
