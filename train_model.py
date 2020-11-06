@@ -12,7 +12,7 @@ import torch
 import sys
 from src import utils
 from tensorboardX import SummaryWriter
-
+import traceback
 
 try:
     from apex import amp
@@ -98,7 +98,16 @@ if __name__ == "__main__":
 
     criterion = nn.CrossEntropyLoss()
     data_loader = DataLoader(data_dir, batch_size)
-
-    train_model(model, data_loader.dataloaders_dict, criterion, optimizer_ft, cmd, writer, is_inception=is_inception,
-                model_save_path=model_save_path)
+    print(data_dir)
+    try:
+        train_model(model, data_loader.dataloaders_dict, criterion, optimizer_ft, cmd, writer, is_inception=is_inception,
+                    model_save_path=model_save_path)
+    except:
+        if os.path.exists('error.txt'):
+            os.remove('error.txt')
+        with open('error.txt', 'a+') as f:
+            f.write(opt.expID)
+            f.write('\n')
+            f.write('----------------------------------------------\n')
+            traceback.print_exc(file=f)
     print("Model {} training finished".format(modelID))

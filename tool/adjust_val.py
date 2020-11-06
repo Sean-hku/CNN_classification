@@ -3,7 +3,7 @@ import random
 import shutil
 
 catag = "underwater"
-val_ratio = 0.2
+val_ratio = 0.9
 class_mark = "all"
 
 

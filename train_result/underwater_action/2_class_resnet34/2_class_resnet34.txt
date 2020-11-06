@@ -1,0 +1,840 @@
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 1'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.1 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 2'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.2 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 3'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.3 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 4'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.4 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 5'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.5 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 6'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.6 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 7'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.7 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 8'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.8 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 9'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.9 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 10'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod adam --freeze_bn True --freeze 0 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 11'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod adam --freeze_bn True --freeze 0.1 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 12'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod adam --freeze_bn True --freeze 0.2 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 13'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod adam --freeze_bn True --freeze 0.3 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 14'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod adam --freeze_bn True --freeze 0.4 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 15'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod adam --freeze_bn True --freeze 0.5 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 16'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod adam --freeze_bn True --freeze 0.6 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 17'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod adam --freeze_bn True --freeze 0.7 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 18'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod adam --freeze_bn True --freeze 0.8 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 19'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod adam --freeze_bn True --freeze 0.9 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 20'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod sgd --freeze_bn True --freeze 0 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 21'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod sgd --freeze_bn True --freeze 0.1 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 22'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod sgd --freeze_bn True --freeze 0.2 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 23'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod sgd --freeze_bn True --freeze 0.3 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 24'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod sgd --freeze_bn True --freeze 0.4 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 25'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod sgd --freeze_bn True --freeze 0.5 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 26'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod sgd --freeze_bn True --freeze 0.6 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 27'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod sgd --freeze_bn True --freeze 0.7 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 28'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod sgd --freeze_bn True --freeze 0.8 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 29'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod sgd --freeze_bn True --freeze 0.9 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 30'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 31'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.1 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 32'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.2 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 33'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.3 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 34'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.4 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 35'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.5 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 36'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.6 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 37'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.7 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 38'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.8 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 39'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.9 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 40'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod adam --freeze_bn False --freeze 0 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 41'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod adam --freeze_bn False --freeze 0.1 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 42'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod adam --freeze_bn False --freeze 0.2 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 43'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod adam --freeze_bn False --freeze 0.3 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 44'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod adam --freeze_bn False --freeze 0.4 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 45'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod adam --freeze_bn False --freeze 0.5 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 46'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod adam --freeze_bn False --freeze 0.6 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 47'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod adam --freeze_bn False --freeze 0.7 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 48'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod adam --freeze_bn False --freeze 0.8 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 49'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod adam --freeze_bn False --freeze 0.9 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 50'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod sgd --freeze_bn False --freeze 0 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 51'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod sgd --freeze_bn False --freeze 0.1 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 52'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod sgd --freeze_bn False --freeze 0.2 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 53'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod sgd --freeze_bn False --freeze 0.3 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 54'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod sgd --freeze_bn False --freeze 0.4 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 55'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod sgd --freeze_bn False --freeze 0.5 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 56'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod sgd --freeze_bn False --freeze 0.6 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 57'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod sgd --freeze_bn False --freeze 0.7 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 58'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod sgd --freeze_bn False --freeze 0.8 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 59'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod sgd --freeze_bn False --freeze 0.9 --epoch 50 --LR 0.001 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 60'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 61'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.1 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 62'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.2 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 63'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.3 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 64'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.4 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 65'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.5 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 66'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.6 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 67'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.7 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 68'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.8 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 69'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.9 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 70'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod adam --freeze_bn True --freeze 0 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 71'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod adam --freeze_bn True --freeze 0.1 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 72'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod adam --freeze_bn True --freeze 0.2 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 73'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod adam --freeze_bn True --freeze 0.3 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 74'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod adam --freeze_bn True --freeze 0.4 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 75'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod adam --freeze_bn True --freeze 0.5 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 76'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod adam --freeze_bn True --freeze 0.6 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 77'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod adam --freeze_bn True --freeze 0.7 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 78'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod adam --freeze_bn True --freeze 0.8 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 79'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod adam --freeze_bn True --freeze 0.9 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 80'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod sgd --freeze_bn True --freeze 0 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 81'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod sgd --freeze_bn True --freeze 0.1 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 82'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod sgd --freeze_bn True --freeze 0.2 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 83'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod sgd --freeze_bn True --freeze 0.3 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 84'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod sgd --freeze_bn True --freeze 0.4 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 85'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod sgd --freeze_bn True --freeze 0.5 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 86'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod sgd --freeze_bn True --freeze 0.6 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 87'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod sgd --freeze_bn True --freeze 0.7 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 88'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod sgd --freeze_bn True --freeze 0.8 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 89'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod sgd --freeze_bn True --freeze 0.9 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 90'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 91'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.1 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 92'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.2 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 93'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.3 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 94'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.4 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 95'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.5 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 96'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.6 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 97'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.7 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 98'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.8 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 99'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.9 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 100'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod adam --freeze_bn False --freeze 0 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 101'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod adam --freeze_bn False --freeze 0.1 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 102'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod adam --freeze_bn False --freeze 0.2 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 103'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod adam --freeze_bn False --freeze 0.3 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 104'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod adam --freeze_bn False --freeze 0.4 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 105'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod adam --freeze_bn False --freeze 0.5 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 106'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod adam --freeze_bn False --freeze 0.6 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 107'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod adam --freeze_bn False --freeze 0.7 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 108'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod adam --freeze_bn False --freeze 0.8 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 109'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod adam --freeze_bn False --freeze 0.9 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 110'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod sgd --freeze_bn False --freeze 0 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 111'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod sgd --freeze_bn False --freeze 0.1 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 112'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod sgd --freeze_bn False --freeze 0.2 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 113'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod sgd --freeze_bn False --freeze 0.3 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 114'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod sgd --freeze_bn False --freeze 0.4 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 115'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod sgd --freeze_bn False --freeze 0.5 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 116'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod sgd --freeze_bn False --freeze 0.6 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 117'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod sgd --freeze_bn False --freeze 0.7 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 118'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod sgd --freeze_bn False --freeze 0.8 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 119'
+'python train_model.py --dataset underwater2_A --backbone resnet34 --batch 64 --optMethod sgd --freeze_bn False --freeze 0.9 --epoch 50 --LR 0.001 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 120'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 241'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.1 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 242'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.2 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 243'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.3 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 244'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.4 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 245'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.5 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 246'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.6 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 247'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.7 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 248'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.8 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 249'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.9 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 250'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 251'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.1 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 252'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.2 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 253'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.3 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 254'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.4 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 255'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.5 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 256'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.6 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 257'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.7 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 258'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.8 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 259'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.9 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 260'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 261'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.1 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 262'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.2 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 263'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.3 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 264'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.4 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 265'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.5 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 266'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.6 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 267'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.7 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 268'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.8 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 269'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.9 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 270'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 271'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.1 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 272'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.2 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 273'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.3 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 274'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.4 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 275'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.5 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 276'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.6 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 277'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.7 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 278'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.8 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 279'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.9 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 280'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 281'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.1 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 282'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.2 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 283'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.3 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 284'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.4 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 285'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.5 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 286'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.6 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 287'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.7 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 288'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.8 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 289'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.9 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 290'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 291'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.1 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 292'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.2 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 293'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.3 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 294'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.4 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 295'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.5 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 296'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.6 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 297'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.7 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 298'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.8 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 299'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.9 --epoch 50 --LR 0.002 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 300'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 301'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.1 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 302'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.2 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 303'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.3 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 304'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.4 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 305'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.5 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 306'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.6 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 307'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.7 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 308'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.8 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 309'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.9 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 310'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 311'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.1 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 312'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.2 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 313'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.3 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 314'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.4 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 315'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.5 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 316'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.6 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 317'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.7 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 318'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.8 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 319'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.9 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 320'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 321'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.1 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 322'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.2 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 323'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.3 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 324'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.4 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 325'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.5 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 326'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.6 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 327'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.7 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 328'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.8 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 329'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.9 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 330'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 331'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.1 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 332'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.2 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 333'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.3 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 334'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.4 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 335'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.5 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 336'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.6 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 337'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.7 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 338'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.8 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 339'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.9 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 340'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 341'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.1 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 342'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.2 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 343'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.3 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 344'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.4 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 345'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.5 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 346'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.6 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 347'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.7 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 348'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.8 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 349'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.9 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 350'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 351'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.1 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 352'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.2 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 353'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.3 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 354'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.4 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 355'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.5 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 356'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.6 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 357'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.7 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 358'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.8 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 359'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.9 --epoch 50 --LR 0.002 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 360'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 481'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.1 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 482'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.2 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 483'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.3 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 484'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.4 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 485'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.5 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 486'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.6 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 487'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.7 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 488'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.8 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 489'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.9 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 490'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 491'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.1 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 492'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.2 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 493'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.3 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 494'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.4 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 495'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.5 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 496'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.6 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 497'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.7 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 498'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.8 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 499'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.9 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 500'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 501'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.1 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 502'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.2 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 503'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.3 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 504'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.4 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 505'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.5 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 506'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.6 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 507'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.7 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 508'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.8 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 509'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.9 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 510'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 511'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.1 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 512'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.2 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 513'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.3 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 514'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.4 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 515'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.5 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 516'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.6 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 517'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.7 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 518'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.8 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 519'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.9 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 520'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 521'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.1 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 522'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.2 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 523'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.3 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 524'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.4 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 525'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.5 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 526'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.6 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 527'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.7 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 528'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.8 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 529'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.9 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 530'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 531'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.1 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 532'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.2 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 533'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.3 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 534'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.4 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 535'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.5 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 536'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.6 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 537'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.7 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 538'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.8 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 539'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.9 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 540'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 541'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.1 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 542'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.2 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 543'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.3 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 544'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.4 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 545'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.5 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 546'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.6 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 547'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.7 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 548'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.8 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 549'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.9 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 550'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 551'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.1 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 552'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.2 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 553'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.3 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 554'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.4 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 555'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.5 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 556'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.6 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 557'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.7 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 558'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.8 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 559'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.9 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 560'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 561'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.1 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 562'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.2 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 563'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.3 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 564'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.4 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 565'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.5 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 566'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.6 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 567'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.7 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 568'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.8 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 569'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.9 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 570'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 571'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.1 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 572'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.2 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 573'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.3 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 574'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.4 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 575'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.5 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 576'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.6 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 577'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.7 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 578'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.8 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 579'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.9 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 580'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 581'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.1 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 582'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.2 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 583'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.3 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 584'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.4 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 585'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.5 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 586'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.6 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 587'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.7 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 588'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.8 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 589'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.9 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 590'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 591'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.1 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 592'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.2 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 593'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.3 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 594'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.4 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 595'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.5 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 596'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.6 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 597'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.7 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 598'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.8 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 599'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.9 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 600'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 721'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.1 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 722'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.2 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 723'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.3 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 724'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.4 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 725'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.5 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 726'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.6 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 727'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.7 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 728'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.8 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 729'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.9 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 730'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 731'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.1 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 732'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.2 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 733'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.3 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 734'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.4 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 735'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.5 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 736'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.6 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 737'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.7 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 738'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.8 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 739'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.9 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 740'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 741'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.1 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 742'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.2 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 743'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.3 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 744'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.4 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 745'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.5 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 746'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.6 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 747'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.7 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 748'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.8 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 749'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.9 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 750'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 751'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.1 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 752'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.2 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 753'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.3 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 754'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.4 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 755'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.5 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 756'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.6 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 757'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.7 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 758'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.8 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 759'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.9 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 760'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 761'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.1 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 762'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.2 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 763'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.3 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 764'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.4 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 765'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.5 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 766'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.6 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 767'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.7 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 768'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.8 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 769'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.9 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 770'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 771'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.1 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 772'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.2 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 773'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.3 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 774'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.4 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 775'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.5 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 776'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.6 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 777'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.7 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 778'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.8 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 779'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.9 --epoch 50 --LR 0.0005 --weightDecay 0 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 780'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 781'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.1 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 782'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.2 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 783'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.3 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 784'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.4 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 785'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.5 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 786'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.6 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 787'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.7 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 788'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.8 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 789'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn True --freeze 0.9 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 790'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 791'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.1 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 792'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.2 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 793'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.3 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 794'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.4 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 795'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.5 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 796'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.6 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 797'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.7 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 798'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.8 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 799'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn True --freeze 0.9 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 800'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 801'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.1 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 802'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.2 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 803'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.3 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 804'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.4 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 805'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.5 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 806'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.6 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 807'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.7 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 808'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.8 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 809'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn True --freeze 0.9 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 810'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 811'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.1 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 812'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.2 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 813'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.3 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 814'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.4 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 815'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.5 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 816'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.6 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 817'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.7 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 818'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.8 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 819'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod rmsprop --freeze_bn False --freeze 0.9 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 820'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 821'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.1 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 822'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.2 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 823'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.3 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 824'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.4 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 825'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.5 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 826'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.6 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 827'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.7 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 828'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.8 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 829'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod adam --freeze_bn False --freeze 0.9 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 830'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 831'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.1 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 832'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.2 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 833'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.3 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 834'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.4 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 835'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.5 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 836'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.6 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 837'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.7 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 838'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.8 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 839'
+'python train_model.py --dataset underwater2_A --backbone mobilenet --batch 64 --optMethod sgd --freeze_bn False --freeze 0.9 --epoch 50 --LR 0.0005 --weightDecay 0.001 --loadModel True --save_interval 5 --val_ratio 0.2 --expFolder underwater_action-2_class_resnet34	--expID 840'

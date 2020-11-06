@@ -35,10 +35,12 @@ class ModelInference(object):
         outputs_tensor = outputs.data
         m_softmax = nn.Softmax(dim=1)
         outputs_tensor = m_softmax(outputs_tensor).to("cpu")
+        print(outputs)
         return np.asarray(outputs_tensor)
 
-    def to_onnx(self):
-        torch_out = torch.onnx.export(self.CNN_model, self.image_batch_tensor, "drown_mob.onnx", verbose=False,)
+
+    def to_onnx(self, name="model.onnx"):
+        torch_out = torch.onnx.export(self.CNN_model, self.image_batch_tensor, name, verbose=False,)
 #                                      input_names=in_names, output_names=out_names)
 
     def to_libtorch(self):

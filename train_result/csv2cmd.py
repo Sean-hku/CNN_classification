@@ -2,7 +2,7 @@ import csv    #加载csv包便于读取csv文件
 import os
 from train_result.config import task_folder, batch_folder
 
-include_cuda = True
+include_cuda = False
 
 csv_name = "{}.csv".format(os.path.join(task_folder, batch_folder, batch_folder))
 out_name = csv_name[:-4] + ".txt"
