@@ -35,6 +35,7 @@ class ModelInference(object):
         outputs_tensor = outputs.data
         m_softmax = nn.Softmax(dim=1)
         outputs_tensor = m_softmax(outputs_tensor).to("cpu")
+        print(outputs)
         return np.asarray(outputs_tensor)
 
     def to_onnx(self, name="model.onnx"):

@@ -141,7 +141,8 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_incept
                 batch_num = 0
                 batch_start_time = time.time()
                 for names, inputs, labels in dataloaders[phase]:
-
+                    # print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1')
+                    # print(len(inputs))
                     inputs = inputs.to(device)
                     labels = labels.to(device)
 
@@ -262,7 +263,7 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_incept
             info_str = "{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}, ,{},{},{},{},{},{},{},{}\n".format(
                 opt.expID, opt.backbone, params, flops, inf_time, opt.batch, opt.optMethod,  opt.freeze_bn, opt.freeze,
                 opt.sparse_s, opt.sparse_decay, opt.epoch, opt.LR, opt.weightDecay, opt.loadModel, computer,
-                os.path.join(opt.expFolder, opt.expID), time_elapsed, train_acc, train_loss, val_acc, val_loss,
+                os.path.join(opt.expFolder, opt.expID), train_acc, train_loss, val_acc, val_loss,time_elapsed,
                 best_epoch, epoch)
             info_str = write_decay_info(decay_epoch, info_str)
             f.write(info_str)
