@@ -16,7 +16,7 @@ def demo3(model_path,img_path,target_layers):
     output_path = os.path.join(img_path.replace("data", "res"), model_path.split('/')[-1][:-4])
     os.makedirs(output_path, exist_ok=True)
     MI =Tester(model_path,0.5)
-    model = MI.model.sport_model
+    model = MI.model.CNN_model
     model.to(device)
     model.eval()
     print("Images:")
