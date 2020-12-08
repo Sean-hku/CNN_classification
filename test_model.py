@@ -12,7 +12,7 @@ class Tester:
     def __init__(self, model_path, conf=0.5):
         self.pre_name = self.__get_pretrain(model_path)
         self.model = ModelInference(num_classes, self.pre_name, model_path)
-        self.conf = conf
+        # self.conf = conf
 
     def __get_pretrain(self, model_path):
         if "_resnet18" in model_path:
@@ -50,11 +50,11 @@ class Tester:
 
     def test_idx(self, img):
         score = self.test_score(img)
-        if list(score[0])[0] > self.conf:
-            idx = 0
-        else:
-            idx = 1
-        # idx = score[0].tolist().index(max(score[0].tolist()))
+        # if list(score[0])[0] > self.conf:
+        #     idx = 0
+        # else:
+        #     idx = 1
+        idx = score[0].tolist().index(max(score[0].tolist()))
         return idx
 
     def test_pred(self, img):
@@ -66,7 +66,7 @@ class Tester:
         font = cv2.FONT_HERSHEY_SIMPLEX
         cv2.putText(img, pred, (50, 50), font, 2, colors[pred], 3)
         cv2.imshow("Result", img)
-        cv2.waitKey(1)
+        cv2.waitKey(500)
 
     def to_onnx(self):
         self.model.to_onnx()
