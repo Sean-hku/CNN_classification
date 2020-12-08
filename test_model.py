@@ -3,9 +3,9 @@ import os
 import cv2
 from src import config
 from src.dataloader import DataLoader
-classes = ["cat", "dog"]
+classes = ["drown", "stand"]
 num_classes = len(classes)
-colors = {"cat": (0,255,255), "dog":(255,255,0)}
+colors = {"drown": (0,255,255), "stand":(255,255,0)}
 
 
 class Tester:
@@ -50,6 +50,7 @@ class Tester:
 
     def test_idx(self, img):
         score = self.test_score(img)
+        print(score)
         if list(score[0])[0] > self.conf:
             idx = 0
         else:
@@ -78,21 +79,17 @@ class Tester:
 if __name__ == '__main__':
     model_pth = config.test_model_path
     img_path = config.test_img
-    # batch_size = 16
-    # data_loader = DataLoader(img_path, batch_size)
-    # for names, inputs, labels in data_loader.dataloaders_dict['val']:
-    #     inputs = inputs.to("cuda:0")
-    #     labels = labels.to("cuda:0")
-    MI = Tester(model_pth)
+    batch_size = 16
+    data_loader = DataLoader(img_path, batch_size)
+    for names, inputs, labels in data_loader.dataloaders_dict['val']:
+        inputs = inputs.to("cuda:0")
+        labels = labels.to("cuda:0")
+    MI = Tester(model_pth,0.5)
     # max_idx = MI.test_idx(cv2.imread(img_path))
     # print(max_idx)
-    for img_name in os.listdir(img_path):
-        im = cv2.imread(os.path.join(img_path, img_name))
+    for img_name in os.listdir('/media/hkuit164/WD20EJRX/CNN_classification/data/underwater2_A/train/stand_walk'):
+        im = cv2.imread(os.path.join('/media/hkuit164/WD20EJRX/CNN_classification/data/underwater2_A/train/stand_walk', img_name))
         pred = MI.test_pred(im)
-
         MI.show_img(im, pred)
-        print("Prediction of {} is {}".format(img_name, pred))
-    MI.to_libtorch()
-
+        # print("Prediction of {} is {}".format(img_name, pred))
     # MI.to_onnx()
-
