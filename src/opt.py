@@ -20,7 +20,7 @@ parser.add_argument('--classes', default=' ', type=str,
                     help='Experiment folder')
 
 "----------------------------- Model options -----------------------------"
-parser.add_argument('--backbone', default="mobilenet", type=str,
+parser.add_argument('--backbone', default="resnet18", type=str,
                     help='The backbone of the model')
 parser.add_argument('--loadModel', default=None, type=str,
                     help='Provide full path to a previously trained model')

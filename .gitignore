@@ -63,3 +63,6 @@ train_result/tmp.txt
 weight
 result
 tensorboard
+src/tv
+*.onnx
+

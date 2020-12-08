@@ -46,4 +46,4 @@ class ModelInference(object):
         example = torch.rand(2, 3, 224, 224).cuda()
         self.CNN_model.eval()
         traced_model = torch.jit.trace(self.CNN_model, example)
-        traced_model.save("drown_mob.pt")
+        traced_model.save("drown_res.pt")
