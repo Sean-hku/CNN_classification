@@ -218,7 +218,12 @@ def generate_cmd(ls):
 
 
 def lr_decay(optimizer, lr):
-    lr = lr * 0.1
+    lr = opt.LR * 0.1
+    for pg in optimizer.param_groups:
+        pg["lr"] = lr
+    return optimizer, lr
+def lr_decay2(optimizer, lr):
+    lr = opt.LR * 0.01
     for pg in optimizer.param_groups:
         pg["lr"] = lr
     return optimizer, lr

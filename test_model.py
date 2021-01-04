@@ -11,7 +11,7 @@ colors = {"cat": (0,255,255), "dog":(255,255,0)}
 class Tester:
     def __init__(self, model_path, conf=0.5):
         self.pre_name = self.__get_pretrain(model_path)
-        self.model = ModelInference(num_classes, self.pre_name, model_path)
+        self.model = ModelInference(num_classes, self.pre_name, model_path,cfg=[])
         # self.conf = conf
 
     def __get_pretrain(self, model_path):

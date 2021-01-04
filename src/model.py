@@ -64,7 +64,7 @@ class ConvNet(nn.Module):
 
 
 class CNNModel(object):
-    def __init__(self, num_classes=2, model_name="inception", feature_extract=True):
+    def __init__(self, num_classes=2, model_name="inception", feature_extract=True,cfg=[]):
         if model_name == "inception":
             self.model = models.inception_v3()
             self.set_parameter_requires_grad(self.model, feature_extract)
@@ -79,7 +79,9 @@ class CNNModel(object):
             self.model.fc = nn.Linear(num_ftrs, num_classes)
             # input_size = 299
         elif model_name == "resnet18":
-            self.model = models.resnet18()
+            from prune.resnet_18_prune import ResNet,BasicBlock,Bottleneck
+
+            self.model = ResNet(BasicBlock,[2,2,2,2],cfg)
             self.set_parameter_requires_grad(self.model, feature_extract)
             if opt.loadModel:
                 model_path = os.path.join("pre_train_model/%s.pth" % model_name)

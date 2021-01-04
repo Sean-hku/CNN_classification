@@ -10,12 +10,13 @@ import os
 
 
 class ModelInference(object):
-    def __init__(self, class_nums, pre_train_name, model_path):
+    def __init__(self, class_nums, pre_train_name, model_path,cfg):
         if "LeNet" not in pre_train_name:
-            self.CNN_model = CNNModel(class_nums, pre_train_name).model.to(device)
+            self.CNN_model = CNNModel(class_nums, pre_train_name, cfg=cfg).model.to(device)
         else:
             self.CNN_model = LeNet(class_nums)
-        self.CNN_model.load_state_dict(torch.load(model_path, map_location=device))
+        if model_path !=None:
+            self.CNN_model.load_state_dict(torch.load(model_path, map_location=device))
         if device != "cpu":
             self.CNN_model.cuda()
 
