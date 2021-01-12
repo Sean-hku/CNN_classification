@@ -9,7 +9,7 @@ from Grad_CAM.grad_cam import GradCAM
 from Grad_CAM.utils import save_gradcam,preprocess
 
 
-def demo3(model_path,img_path,target_layers):
+def get_gram(model_path,img_path,target_layers):
 
     device = torch.device("cuda")
     print ("device",device)
@@ -43,4 +43,4 @@ if __name__ == "__main__":
     img_path = '/media/hkuit164/WD20EJRX/CNN_classification/data/test'
     # The four residual layers
     target_layers = ["layer1.1.conv2","layer4.1.conv1","layer2.1.conv1","layer3.1.conv1","layer4.1.bn1"]
-    demo3(model_path,img_path,target_layers)
+    get_gram(model_path,img_path,target_layers)

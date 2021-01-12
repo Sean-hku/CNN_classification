@@ -1,13 +1,16 @@
 # -*- coding:utf-8 -*-
 from __future__ import print_function
 from src.model import CNNModel, LeNet
-from src.trainer import train_model
+from src.opt import opt
+if opt.sparse:
+    from src.sparse_trainer import train_model
+else:
+    from src.trainer import train_model
 from src.dataloader import DataLoader
 import src.config as config
 import torch.nn as nn
 import torch.optim as optim
 import os
-from src.opt import opt
 import torch
 import sys
 from src import utils

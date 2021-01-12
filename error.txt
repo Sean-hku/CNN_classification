@@ -1,0 +1,8 @@
+default
+----------------------------------------------
+Traceback (most recent call last):
+  File "/media/hkuit164/WD20EJRX/CNN_classification/train_model.py", line 107, in <module>
+    model_save_path=model_save_path)
+  File "/media/hkuit164/WD20EJRX/CNN_classification/src/sparse_trainer.py", line 152, in train_model
+    cls_sum[l] += 1
+KeyboardInterrupt

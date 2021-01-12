@@ -10,7 +10,7 @@ import os
 
 
 class ModelInference(object):
-    def __init__(self, class_nums, pre_train_name, model_path,cfg):
+    def __init__(self, class_nums, pre_train_name, model_path,cfg='default'):
         if "LeNet" not in pre_train_name:
             self.CNN_model = CNNModel(class_nums, pre_train_name, cfg=cfg).model.to(device)
         else:

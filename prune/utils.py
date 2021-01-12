@@ -1,34 +1,25 @@
 import torch
 import numpy as np
-from terminaltables import AsciiTable
-import torch.nn.functional as F
-from copy import deepcopy
 import torch.nn as nn
-from src.model import CNNModel
-def parse_module_defs2(model):
+import cv2
+
+
+def parse_module_defs(model):
     all_conv = []
     bn_id = []
     ignore_idx = set()
-    #add bn module to prune_id and every first conv layer of block like layer *.0.conv1
-    for i , layer in enumerate(list(model.named_modules())):
+    # add bn module to prune_id and every first conv layer of block like layer *.0.conv1
+    for i, layer in enumerate(list(model.named_modules())):
         # choose the first conv in every basicblock
         if '.bn1' in layer[0]:
             bn_id.append(i)
         if 'conv' in layer[0]:
             all_conv.append(i)
-        # if 'downsample' in layer[0]:
-        #     ignore_idx.add(i-1)
-        # if layer[0] in ['layer{}.0.conv1'.format(x) for x in range(2,5)]:
-        #     ignore_idx.add(i+1)
     prune_id = [idx for idx in bn_id if idx not in ignore_idx]
-    return prune_id,ignore_idx,all_conv
+    return prune_id, ignore_idx, all_conv
 
-
-
-    # [layer for layer in list(model.named_modules()) if 'conv' in layer[0]]
 
 def gather_bn_weights(module_list, prune_idx):
-
     size_list = [module_list[idx][1].weight.data.shape[0] for idx in prune_idx]
 
     bn_weights = torch.zeros(sum(size_list))
@@ -55,124 +46,6 @@ class BNOptimizer():
                 bn_module.weight.grad.data.add_(s * torch.sign(bn_module.weight.data))  # L1
 
 
-
-def obtain_quantiles(bn_weights, num_quantile=5):
-    sorted_bn_weights, i = torch.sort(bn_weights)
-    total = sorted_bn_weights.shape[0]
-    quantiles = sorted_bn_weights.tolist()[-1::-total // num_quantile][::-1]
-    print("\nBN weights quantile:")
-    quantile_table = [
-        [f'{i}/{num_quantile}' for i in range(1, num_quantile + 1)],
-        ["%.3f" % quantile for quantile in quantiles]
-    ]
-    print(AsciiTable(quantile_table).table)
-
-    return quantiles
-
-
-def get_input_mask(module_defs, idx, CBLidx2mask):
-    if idx == 0:
-        return np.ones(3)
-
-    if module_defs[idx - 1]['type'] == 'convolutional':
-        return CBLidx2mask[idx - 1]
-    elif module_defs[idx - 1]['type'] == 'shortcut':
-        return CBLidx2mask[idx - 2]
-    elif module_defs[idx - 1]['type'] == 'route':
-        route_in_idxs = []
-        for layer_i in module_defs[idx - 1]['layers'].split(","):
-            if int(layer_i) < 0:
-                route_in_idxs.append(idx - 1 + int(layer_i))
-            else:
-                route_in_idxs.append(int(layer_i))
-
-        if len(route_in_idxs) == 1:
-            return CBLidx2mask[route_in_idxs[0]]
-
-        elif len(route_in_idxs) == 2:
-            # return np.concatenate([CBLidx2mask[in_idx - 1] for in_idx in route_in_idxs])
-            if module_defs[route_in_idxs[0]]['type'] == 'upsample':
-                mask1 = CBLidx2mask[route_in_idxs[0] - 1]
-            elif module_defs[route_in_idxs[0]]['type'] == 'convolutional':
-                mask1 = CBLidx2mask[route_in_idxs[0]]
-            if module_defs[route_in_idxs[1]]['type'] == 'convolutional':
-                mask2 = CBLidx2mask[route_in_idxs[1]]
-            else:
-                mask2 = CBLidx2mask[route_in_idxs[1] - 1]
-            return np.concatenate([mask1, mask2])
-
-        elif len(route_in_idxs) == 4:
-            # spp结构中最后一个route
-            mask = CBLidx2mask[route_in_idxs[-1]]
-            return np.concatenate([mask, mask, mask, mask])
-
-        else:
-            print("Something wrong with route module!")
-            raise Exception
-    elif module_defs[idx - 1]['type'] == 'maxpool':  # tiny
-        return CBLidx2mask[idx - 2]
-
-
-def init_weights_from_loose_model(compact_model, loose_model, CBL_idx, Conv_idx, CBLidx2mask):
-    for idx in CBL_idx:
-        compact_CBL = compact_model.module_list[idx]
-        loose_CBL = loose_model.module_list[idx]
-        out_channel_idx = np.argwhere(CBLidx2mask[idx])[:, 0].tolist()
-
-        compact_bn, loose_bn = compact_CBL[1], loose_CBL[1]
-        compact_bn.weight.data = loose_bn.weight.data[out_channel_idx].clone()
-        compact_bn.bias.data = loose_bn.bias.data[out_channel_idx].clone()
-        compact_bn.running_mean.data = loose_bn.running_mean.data[out_channel_idx].clone()
-        compact_bn.running_var.data = loose_bn.running_var.data[out_channel_idx].clone()
-
-        input_mask = get_input_mask(loose_model.module_defs, idx, CBLidx2mask)
-        in_channel_idx = np.argwhere(input_mask)[:, 0].tolist()
-        compact_conv, loose_conv = compact_CBL[0], loose_CBL[0]
-        tmp = loose_conv.weight.data[:, in_channel_idx, :, :].clone()
-        compact_conv.weight.data = tmp[out_channel_idx, :, :, :].clone()
-
-    for idx in Conv_idx:
-        compact_conv = compact_model.module_list[idx][0]
-        loose_conv = loose_model.module_list[idx][0]
-
-        input_mask = get_input_mask(loose_model.module_defs, idx, CBLidx2mask)
-        in_channel_idx = np.argwhere(input_mask)[:, 0].tolist()
-        compact_conv.weight.data = loose_conv.weight.data[:, in_channel_idx, :, :].clone()
-        compact_conv.bias.data = loose_conv.bias.data.clone()
-
-
-def prune_model_keep_size(model, prune_idx, CBL_idx, CBLidx2mask):
-    pruned_model = deepcopy(model)
-    for idx in prune_idx:
-        mask = torch.from_numpy(CBLidx2mask[idx]).cuda()
-        bn_module = pruned_model.module_list[idx][1]
-
-        bn_module.weight.data.mul_(mask)
-
-        activation = F.leaky_relu((1 - mask) * bn_module.bias.data, 0.1)
-
-        # 两个上采样层前的卷积层
-        next_idx_list = [idx + 1]
-        if idx == 79:
-            next_idx_list.append(84)
-        elif idx == 91:
-            next_idx_list.append(96)
-
-        for next_idx in next_idx_list:
-            next_conv = pruned_model.module_list[next_idx][0]
-            conv_sum = next_conv.weight.data.sum(dim=(2, 3))
-            offset = conv_sum.matmul(activation.reshape(-1, 1)).reshape(-1)
-            if next_idx in CBL_idx:
-                next_bn = pruned_model.module_list[next_idx][1]
-                next_bn.running_mean.data.sub_(offset)
-            else:
-                next_conv.bias.data.add_(offset)
-
-        bn_module.bias.data.mul_(mask)
-
-    return pruned_model
-
-
 def obtain_bn_mask(bn_module, thre):
     thre = thre.cuda()
     mask = bn_module.weight.data.abs().ge(thre).float()
@@ -180,172 +53,6 @@ def obtain_bn_mask(bn_module, thre):
     return mask
 
 
-def update_activation(i, pruned_model, activation, CBL_idx):
-    next_idx = i + 1
-    if pruned_model.module_defs[next_idx]['type'] == 'convolutional':
-        next_conv = pruned_model.module_list[next_idx][0]
-        conv_sum = next_conv.weight.data.sum(dim=(2, 3))
-        offset = conv_sum.matmul(activation.reshape(-1, 1)).reshape(-1)
-        if next_idx in CBL_idx:
-            next_bn = pruned_model.module_list[next_idx][1]
-            next_bn.running_mean.data.sub_(offset)
-        else:
-            next_conv.bias.data.add_(offset)
-
-
-def prune_model_keep_size2(model, prune_idx, CBL_idx, CBLidx2mask):
-    pruned_model = deepcopy(model)
-    activations = []
-    for i, model_def in enumerate(model.module_defs):
-
-        if model_def['type'] == 'convolutional':
-            activation = torch.zeros(int(model_def['filters'])).cuda()
-            if i in prune_idx:
-                mask = torch.from_numpy(CBLidx2mask[i]).cuda()
-                bn_module = pruned_model.module_list[i][1]
-                bn_module.weight.data.mul_(mask)
-                if model_def['activation'] == 'leaky':
-                    activation = F.leaky_relu((1 - mask) * bn_module.bias.data, 0.1)
-                elif model_def['activation'] == 'mish':
-                    activation = (1 - mask) * bn_module.bias.data.mul(F.softplus(bn_module.bias.data).tanh())
-                update_activation(i, pruned_model, activation, CBL_idx)
-                bn_module.bias.data.mul_(mask)
-            activations.append(activation)
-
-        elif model_def['type'] == 'shortcut':
-            actv1 = activations[i - 1]
-            from_layer = int(model_def['from'])
-            actv2 = activations[i + from_layer]
-            activation = actv1 + actv2
-            update_activation(i, pruned_model, activation, CBL_idx)
-            activations.append(activation)
-
-
-
-        elif model_def['type'] == 'route':
-            # spp不参与剪枝，其中的route不用更新，仅占位
-            from_layers = [int(s) for s in model_def['layers'].split(',')]
-            activation = None
-            if len(from_layers) == 1:
-                activation = activations[i + from_layers[0] if from_layers[0] < 0 else from_layers[0]]
-                update_activation(i, pruned_model, activation, CBL_idx)
-            elif len(from_layers) == 2:
-                actv1 = activations[i + from_layers[0]]
-                actv2 = activations[i + from_layers[1] if from_layers[1] < 0 else from_layers[1]]
-                activation = torch.cat((actv1, actv2))
-                update_activation(i, pruned_model, activation, CBL_idx)
-            activations.append(activation)
-
-        elif model_def['type'] == 'upsample':
-            # activation = torch.zeros(int(model.module_defs[i - 1]['filters'])).cuda()
-            activations.append(activations[i - 1])
-
-        elif model_def['type'] == 'yolo':
-            activations.append(None)
-
-        elif model_def['type'] == 'maxpool':  # 区分spp和tiny
-            if model.module_defs[i + 1]['type'] == 'route':
-                activations.append(None)
-            else:
-                activation = activations[i - 1]
-                update_activation(i, pruned_model, activation, CBL_idx)
-                activations.append(activation)
-
-    return pruned_model
-
-
-def get_mask(model, prune_idx, shortcut_idx):
-    sort_prune_idx = [idx for idx in prune_idx if idx not in shortcut_idx]
-    bn_weights = gather_bn_weights(model.module_list, sort_prune_idx)
-    sorted_bn = torch.sort(bn_weights)[0]
-    highest_thre = []
-    for idx in sort_prune_idx:
-        # .item()可以得到张量里的元素值
-        highest_thre.append(model.module_list[idx][1].weight.data.abs().max().item())
-    highest_thre = min(highest_thre)
-    filters_mask = []
-    idx_new = dict()
-    # CBL_idx存储的是所有带BN的卷积层（YOLO层的前一层卷积层是不带BN的）
-    for idx in prune_idx:
-        bn_module = model.module_list[idx][1]
-        if idx not in shortcut_idx:
-            mask = obtain_bn_mask(bn_module, torch.tensor(highest_thre)).cpu()
-            idx_new[idx] = mask
-        else:
-            mask = idx_new[shortcut_idx[idx]]
-            idx_new[idx] = mask
-
-        filters_mask.append(mask.clone())
-
-    prune2mask = {idx: mask for idx, mask in zip(prune_idx, filters_mask)}
-    return prune2mask
-
-
-def get_mask2(model, prune_idx, percent):
-    bn_weights = gather_bn_weights(model.module_list, prune_idx)
-    sorted_bn = torch.sort(bn_weights)[0]
-    thre_index = int(len(sorted_bn) * percent)
-    thre = sorted_bn[thre_index]
-
-    filters_mask = []
-    for idx in prune_idx:
-        bn_module = model.module_list[idx][1]
-        mask = obtain_bn_mask(bn_module, thre).cpu()
-        filters_mask.append(mask.clone())
-
-    prune2mask = {idx: mask for idx, mask in zip(prune_idx, filters_mask)}
-    return prune2mask
-
-
-def merge_mask(model, CBLidx2mask, CBLidx2filters):
-    for i in range(len(model.module_defs) - 1, -1, -1):
-        mtype = model.module_defs[i]['type']
-        if mtype == 'shortcut':
-            if model.module_defs[i]['is_access']:
-                continue
-
-            Merge_masks = []
-            layer_i = i
-            while mtype == 'shortcut':
-                model.module_defs[layer_i]['is_access'] = True
-
-                if model.module_defs[layer_i - 1]['type'] == 'convolutional':
-                    bn = int(model.module_defs[layer_i - 1]['batch_normalize'])
-                    if bn:
-                        Merge_masks.append(CBLidx2mask[layer_i - 1].unsqueeze(0))
-
-                layer_i = int(model.module_defs[layer_i]['from']) + layer_i
-                mtype = model.module_defs[layer_i]['type']
-
-                if mtype == 'convolutional':
-                    bn = int(model.module_defs[layer_i]['batch_normalize'])
-                    if bn:
-                        Merge_masks.append(CBLidx2mask[layer_i].unsqueeze(0))
-
-            if len(Merge_masks) > 1:
-                Merge_masks = torch.cat(Merge_masks, 0)
-                merge_mask = (torch.sum(Merge_masks, dim=0) > 0).float()
-            else:
-                merge_mask = Merge_masks[0].float()
-
-            layer_i = i
-            mtype = 'shortcut'
-            while mtype == 'shortcut':
-
-                if model.module_defs[layer_i - 1]['type'] == 'convolutional':
-                    bn = int(model.module_defs[layer_i - 1]['batch_normalize'])
-                    if bn:
-                        CBLidx2mask[layer_i - 1] = merge_mask
-                        CBLidx2filters[layer_i - 1] = int(torch.sum(merge_mask).item())
-
-                layer_i = int(model.module_defs[layer_i]['from']) + layer_i
-                mtype = model.module_defs[layer_i]['type']
-
-                if mtype == 'convolutional':
-                    bn = int(model.module_defs[layer_i]['batch_normalize'])
-                    if bn:
-                        CBLidx2mask[layer_i] = merge_mask
-                        CBLidx2filters[layer_i] = int(torch.sum(merge_mask).item())
 def sort_bn(model, prune_idx):
     # size_list = [m[idx][1].weight.data.shape[0] for idx, m in enumerate(list(model.named_modules())) if idx in prune_idx]
     size_list = [m[1].weight.data.shape[0] for idx, m in enumerate(model.named_modules()) if idx in prune_idx]
@@ -360,6 +67,7 @@ def sort_bn(model, prune_idx):
     sorted_bn = torch.sort(bn_weights)[0]
 
     return sorted_bn
+
 
 def obtain_bn_threshold(sorted_bn, percentage):
     thre_index = int(len(sorted_bn) * percentage)
@@ -401,7 +109,6 @@ def obtain_filters_mask(model, prune_idx, thre):
                 mask = np.ones(module[1].weight.data.shape)
                 remain = mask.shape[0]
 
-
             total += mask.shape[0]
             num_filters.append(remain)
             filters_mask.append(mask.copy())
@@ -411,22 +118,72 @@ def obtain_filters_mask(model, prune_idx, thre):
 
     return pruned_filters[1:], pruned_maskers
 
-def init_weights_from_loose_model(compact_model, loose_model, Conv_idx, CBLidx2mask):
 
-    for i,idx in enumerate(Conv_idx):
-        if i >0:
-            out_channel_idx = np.argwhere(CBLidx2mask[idx])[:, 0].tolist()
-            in_channel_idx = np.argwhere(CBLidx2mask[Conv_idx[i-1]])[:, 0].tolist()
+def init_weights_from_loose_model(all_conv_layer, Conv_id, prune_model, model, CBLidx2mask):
+    for i, idx in enumerate(all_conv_layer):
+        if i > 0:
+            if idx in Conv_id:
+                out_channel_idx = np.argwhere(CBLidx2mask[idx])[:, 0].tolist()
+                # last conv index
+                last_conv_index = all_conv_layer[all_conv_layer.index(idx) - 1]
+                if last_conv_index in Conv_id:
+                    in_channel_idx = np.argwhere(CBLidx2mask[last_conv_index])[:, 0].tolist()
+                else:
+                    in_channel_idx = list(range(
+                        list(prune_model.named_modules())[all_conv_layer[all_conv_layer.index(idx) - 1]][
+                            1].out_channels))
+            else:
+                # we should make conv2's input equal to the output channel of conv1.
+                out_channel_idx = list(range(list(prune_model.named_modules())[idx][1].out_channels))
+                index = all_conv_layer[all_conv_layer.index(idx) - 1]
+                in_channel_idx = np.argwhere(CBLidx2mask[index])[:, 0].tolist()
 
-            compact_bn, loose_bn         = list(compact_model.modules())[idx+1], list(loose_model.modules())[idx+1]
-            compact_bn.weight.data       = loose_bn.weight.data[out_channel_idx].clone()
-            compact_bn.bias.data         = loose_bn.bias.data[out_channel_idx].clone()
+            compact_bn, loose_bn = list(prune_model.named_modules())[idx + 1][1], list(model.named_modules())[idx + 1][
+                1]
+            compact_bn.weight.data = loose_bn.weight.data[out_channel_idx].clone()
+            compact_bn.bias.data = loose_bn.bias.data[out_channel_idx].clone()
             compact_bn.running_mean.data = loose_bn.running_mean.data[out_channel_idx].clone()
-            compact_bn.running_var.data  = loose_bn.running_var.data[out_channel_idx].clone()
+            compact_bn.running_var.data = loose_bn.running_var.data[out_channel_idx].clone()
 
-            #input mask is
-
-            compact_conv, loose_conv = list(compact_model.modules())[idx], list(loose_model.modules())[idx]
+            compact_conv, loose_conv = list(prune_model.named_modules())[idx][1], list(model.named_modules())[idx][1]
             tmp = loose_conv.weight.data[:, in_channel_idx, :, :].clone()
             compact_conv.weight.data = tmp[out_channel_idx, :, :, :].clone()
-            print(idx)
+
+
+def image_normalize(img_name, size=224):
+    image_normalize_mean = [0.485, 0.456, 0.406]
+    image_normalize_std = [0.229, 0.224, 0.225]
+    if isinstance(img_name, str):
+        image_array = cv2.imread(img_name)
+    else:
+        image_array = img_name
+    image_array = cv2.resize(image_array, (size, size))
+    image_array = np.ascontiguousarray(image_array[..., ::-1], dtype=np.float32)
+    image_array = image_array.transpose((2, 0, 1))
+    for channel, _ in enumerate(image_array):
+        image_array[channel] /= 255.0
+        image_array[channel] -= image_normalize_mean[channel]
+        image_array[channel] /= image_normalize_std[channel]
+    image_tensor = torch.from_numpy(image_array).float()
+    return image_tensor
+
+
+def predict(CNN_model, img):
+    img_tensor_list = []
+    img_tensor = image_normalize(img)
+    img_tensor_list.append(torch.unsqueeze(img_tensor, 0))
+    if len(img_tensor_list) > 0:
+        input_tensor = torch.cat(tuple(img_tensor_list), dim=0)
+        res_array = predict_image(CNN_model, input_tensor)
+        return res_array
+
+
+def predict_image(CNN_model, image_batch_tensor):
+    CNN_model.eval()
+    image_batch_tensor = image_batch_tensor.cuda()
+    outputs = CNN_model(image_batch_tensor)
+    outputs_tensor = outputs.data
+    m_softmax = nn.Softmax(dim=1)
+    outputs_tensor = m_softmax(outputs_tensor).to("cpu")
+    print(outputs)
+    return np.asarray(outputs_tensor)

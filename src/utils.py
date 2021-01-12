@@ -347,3 +347,32 @@ def csv_cls_num(dl):
             ls.append(v)
         tmp += ls
     return tmp
+
+def get_pretrain(model_path):
+    if "_resnet18" in model_path:
+        name = "resnet18"
+    elif "_resnet50" in model_path:
+        name = "resnet50"
+    elif "_resnet34" in model_path:
+        name = "resnet34"
+    elif "_resnet101" in model_path:
+        name = "resnet101"
+    elif "_resnet152" in model_path:
+        name = "resnet152"
+    elif "_inception" in model_path:
+        name = "inception"
+    elif "_mobilenet" in model_path:
+        name = "mobilenet"
+    elif "_shufflenet" in model_path:
+        name = "shufflenet"
+    elif "_LeNet" in model_path:
+        name = "LeNet"
+    elif "_squeezenet" in model_path:
+        name = "squeezenet"
+    elif "mnasnet" in model_path:
+        name = "mnasnet"
+    elif "LeNet" in model_path:
+        name = "LeNet"
+    else:
+        raise ValueError("Wrong name of pre-train model")
+    return name

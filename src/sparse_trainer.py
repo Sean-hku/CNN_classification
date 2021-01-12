@@ -31,6 +31,7 @@ warm_up_epoch = max(config.warm_up.keys())
 
 
 def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_inception=False, model_save_path="./"):
+    print("-------------------sparse training-----------------------")
     num_epochs = opt.epoch
     log_dir = os.path.join(model_save_path, opt.expID)
     os.makedirs(log_dir, exist_ok=True)
@@ -42,7 +43,7 @@ def train_model(model, dataloaders, criterion, optimizer, cmd, writer, is_incept
     epoch_ls = []
     early_stopping = EarlyStopping(patience=opt.patience, verbose=True)
 
-    prune_idx,ignore_id,all_conv = parse_module_defs2(model)
+    prune_idx,ignore_id,all_conv = parse_module_defs(model)
     print(prune_idx)
 
     decay, decay_epoch = 0, []

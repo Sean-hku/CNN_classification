@@ -100,18 +100,19 @@ class ResNet(nn.Module):
                  groups=1, width_per_group=64, replace_stride_with_dilation=None,
                  norm_layer=None):
         super(ResNet, self).__init__()
-        if not cfg:
+        if cfg == 'default':
             cfg = [[64, 64], [64, 64], [64, 64], [64, 64], \
                    [64, 128], [128, 128], [128, 128], [128, 128], \
                    [128, 256], [256, 256], [256, 256], [256, 256], \
                    [256, 512], [512, 512], [512, 512], [512, 512]]
-        else:
-            # cfg = [[3, 64], [64, 64], [64, 64], [64, 64], [64, 64], [64, 128], [128, 128], [128, 128], [128, 128], [128, 220], [220, 256], [256, 121], [121, 256], [256, 13], [13, 512], [512, 30], [30, 512]]
-            with open('/media/hkuit164/WD20EJRX/CNN_classification/prune/cfg.txt', "r") as f:
-                cfg = f.readline().split(" ")
-                cfg = ''.join(cfg)
-                # aa = '[[3, 64], [64, 64], [64, 64], [64, 64], [64, 64], [64, 128], [128, 128], [128, 128], [128, 128], [128, 220], [220, 256], [256, 121], [121, 256], [256, 13], [13, 512], [512, 30], [30, 512]]'
-            # cfg = cfg
+        elif cfg == 'prune':
+            cfg = [ [64, 64], [64, 64], [64, 64], [64, 64],
+                   [64, 128], [128, 128], [128, 128], [128, 128],
+                   [128, 223], [223, 256], [256, 118], [118, 256],
+                   [256, 13], [13, 512], [512, 30], [30, 512]]
+            # with open('./cfg.txt', "r") as f:
+            #     cfg = f.readlines()
+            #     cfg = ''.join(cfg)
         if norm_layer is None:
             norm_layer = nn.BatchNorm2d
         self._norm_layer = norm_layer

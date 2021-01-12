@@ -2,6 +2,7 @@ from src.tester import ModelInference
 import os
 import cv2
 from src import config
+
 from src.dataloader import DataLoader
 classes = ["cat", "dog"]
 num_classes = len(classes)
@@ -12,7 +13,7 @@ class Tester:
     def __init__(self, model_path, conf=0.5):
         self.pre_name = self.__get_pretrain(model_path)
         self.model = ModelInference(num_classes, self.pre_name, model_path,cfg=[])
-        # self.conf = conf
+
 
     def __get_pretrain(self, model_path):
         if "_resnet18" in model_path:
@@ -45,15 +46,10 @@ class Tester:
 
     def test_score(self, img):
         score = self.model.predict(img)
-        # max_val, max_idx = torch.max(score, 1)
         return score
 
     def test_idx(self, img):
         score = self.test_score(img)
-        # if list(score[0])[0] > self.conf:
-        #     idx = 0
-        # else:
-        #     idx = 1
         idx = score[0].tolist().index(max(score[0].tolist()))
         return idx
 
@@ -89,9 +85,6 @@ if __name__ == '__main__':
     for img_name in os.listdir(img_path):
         im = cv2.imread(os.path.join(img_path, img_name))
         pred = MI.test_pred(im)
-
         MI.show_img(im, pred)
         print("Prediction of {} is {}".format(img_name, pred))
     MI.to_libtorch()
-
-    # MI.to_onnx()

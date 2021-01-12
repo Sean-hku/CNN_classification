@@ -4,11 +4,12 @@ import torch
 import numpy as np
 import torch.nn as nn
 
-image_normalize_mean = [0.485, 0.456, 0.406]
-image_normalize_std = [0.229, 0.224, 0.225]
+
 
 
 def image_normalize(img_name, size=224):
+    image_normalize_mean = [0.485, 0.456, 0.406]
+    image_normalize_std = [0.229, 0.224, 0.225]
     if isinstance(img_name, str):
         image_array = cv2.imread(img_name)
     else:
@@ -46,7 +47,7 @@ classes = ['drown','stand']
 num_classes = len(classes)
 name = 'resnet18'
 model_path = '/media/hkuit164/WD20EJRX/CNN_classification/prune/new_model.pth'
-model = ModelInference(num_classes, name, model_path,cfg = [ [64, 64], [64, 64], [64, 64], [64, 64], [64, 128], [128, 128], [128, 128], [128, 128], [128, 220], [220, 256], [256, 121], [121, 256], [256, 13], [13, 512], [512, 30], [30, 512]]).CNN_model
+model = ModelInference(num_classes, name, model_path,cfg ='prune').CNN_model
 img = cv2.imread('/media/hkuit164/WD20EJRX/5_pics/Drown/0044_80.jpg')
 res = predict(model,img)
 print(res)
