@@ -83,11 +83,18 @@ class CNNModel(object):
             from prune.resnet_18_prune import ResNet,BasicBlock,Bottleneck
             self.model = ResNet(BasicBlock,[2,2,2,2],cfg)
             self.set_parameter_requires_grad(self.model, feature_extract)
+            # num_ftrs = self.model.fc.in_features
+            # self.model.fc = nn.Linear(num_ftrs, num_classes)
             if opt.loadModel:
-                model_path = os.path.join("pre_train_model/%s.pth" % model_name)
-                self.model.load_state_dict(torch.load(model_path, map_location=device))
-            num_ftrs = self.model.fc.in_features
-            self.model.fc = nn.Linear(num_ftrs, num_classes)
+                if "pre" in opt.loadModel:
+                    self.model.load_state_dict(torch.load(opt.loadModel, map_location=device))
+                    num_ftrs = self.model.fc.in_features
+                    self.model.fc = nn.Linear(num_ftrs, num_classes)
+                else:
+                    num_ftrs = self.model.fc.in_features
+                    self.model.fc = nn.Linear(num_ftrs, num_classes)
+                    self.model.load_state_dict(torch.load(opt.loadModel, map_location=device))
+
             # input_size = 224
         elif model_name == "resnet34":
             self.model = models.resnet34()

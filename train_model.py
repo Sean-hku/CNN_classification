@@ -47,7 +47,7 @@ if __name__ == "__main__":
     if backbone == "LeNet":
         model = LeNet(class_nums).to(device)
     else:
-        model = CNNModel(class_nums, backbone, feature_extract).model.to(device)
+        model = CNNModel(class_nums, backbone, feature_extract, cfg="default").model.to(device)
 
     params_to_update = model.parameters()
 

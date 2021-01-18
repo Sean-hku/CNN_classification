@@ -57,3 +57,11 @@ class DataLoader(object):
                                                                 shuffle=True, num_workers=opt.num_worker)
                             for x in ['train', 'val', ]}
 
+
+class TestDataLoader:
+    def __init__(self, data_dir, batch_size, keyword="test", inp_size=224):
+        self.image_datasets = {x: MyDataset(os.path.join(data_dir, x), config.datasets[opt.dataset], size=inp_size)
+                               for x in [keyword]}
+        self.dataloaders_dict = {x: torch.utils.data.DataLoader(self.image_datasets[x], batch_size=batch_size,
+                                                                shuffle=True, num_workers=opt.num_worker)
+                            for x in [keyword]}

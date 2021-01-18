@@ -21,7 +21,7 @@ def normal_prune(model_path, save_cfg_path, save_model_path):
     init_weights_from_loose_model(all_conv_layer, Conv_id, prune_model, model, CBLidx2mask)
 
     cfg_file = open(save_cfg_path, 'a+')
-    cfg = [[list(layer[1].weight.shape[1::-1]) for layer in list(prune_model.named_modules()) if 'conv' in layer[0]]][
+    cfg = [list(layer[1].weight.shape[1::-1]) for layer in list(prune_model.named_modules()) if 'conv' in layer[0]][
           1:]
     print(cfg, file=cfg_file)
     torch.save(prune_model.state_dict(), save_model_path)
@@ -35,6 +35,6 @@ def test_prune_model(test_model_path, img_path):
 
 
 if __name__ == '__main__':
-    normal_prune(model_path=config.model_path, save_cfg_path=config.pruned_cfg_file,
-                 save_model_path=config.pruned_model_file)
+    # normal_prune(model_path=config.model_path, save_cfg_path=config.pruned_cfg_file,
+    #              save_model_path=config.pruned_model_file)
     test_prune_model(config.test_model_path, config.img_path)
