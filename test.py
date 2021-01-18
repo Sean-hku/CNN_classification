@@ -45,7 +45,7 @@ from src.utils import get_pretrain
 #     plt.show()
 
 
-def test2(model_path, img_path, batch_size, num_classes, keyword):
+def test(model_path, img_path, batch_size, num_classes, keyword):
 
     label_tensors, preds_tensors = [], []
     for idx in range(num_classes):
