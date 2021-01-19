@@ -4,7 +4,7 @@ import torch
 from sklearn.metrics import precision_recall_curve
 from tqdm import tqdm
 from src import config
-from src.dataloader import DataLoader
+from src.dataloader import TestDataLoader
 from src.opt import opt
 from src.tester import ModelInference
 from src.utils import get_pretrain
@@ -48,11 +48,11 @@ from src.utils import get_pretrain
 def test(model_path, img_path, batch_size, num_classes, keyword):
 
     label_tensors, preds_tensors = [], []
-    for idx in range(num_classes):
+    for _ in range(num_classes):
         label_tensors.append(torch.LongTensor([]).to("cuda:0"))
         preds_tensors.append(torch.FloatTensor([]).to("cuda:0"))
 
-    data_loader = DataLoader(img_path, batch_size)
+    data_loader = TestDataLoader(img_path, batch_size, keyword)
     pbar = tqdm(enumerate(data_loader.dataloaders_dict[keyword]), total=len(data_loader.dataloaders_dict[keyword]))
     pre_name = get_pretrain(model_path)
     Inference = ModelInference(num_classes, pre_name, model_path, cfg='default')
