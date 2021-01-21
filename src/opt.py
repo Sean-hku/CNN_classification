@@ -35,11 +35,11 @@ parser.add_argument('--weightDecay', default=0, type=float,
 parser.add_argument('--eps', default=1e-8, type=float,
                     help='epsilon')
 parser.add_argument('--crit', default='MSE', type=str,
-                    help='Criterion type')
+                    help='Loss criterion')
 parser.add_argument('--freeze', default=0, type=float,
-                    help='freeze backbone')
+                    help='whether freeze backbone')
 parser.add_argument('--freeze_bn', default=False, type=bool,
-                    help='freeze bn')
+                    help='whether freeze bn')
 parser.add_argument('--optMethod', default='adam', type=str,
                     help='Optimization method: rmsprop | sgd | nag | adadelta')
 parser.add_argument('--sparse_s', default=0, type=float,
@@ -50,8 +50,8 @@ parser.add_argument('--patience', default=4, type=float,
                     help='epoch of lr decay')
 parser.add_argument('--lr_decay_time', default=3, type=int,
                     help='epoch of lr decay')
-parser.add_argument('--resnet18_cfg', default=None, type=int,
-                    help='epoch of lr decay')
+parser.add_argument('--resnet18_cfg', default=None, type=str,
+                    help='The configuration of resnet18')
 
 "----------------------------- Training options -----------------------------"
 parser.add_argument('--epoch', default=30, type=int,
