@@ -100,16 +100,25 @@ class ResNet(nn.Module):
                  groups=1, width_per_group=64, replace_stride_with_dilation=None,
                  norm_layer=None):
         super(ResNet, self).__init__()
-        if cfg == 'default':
-            cfg = [[64, 64], [64, 64], [64, 64], [64, 64], \
-                   [64, 128], [128, 128], [128, 128], [128, 128], \
-                   [128, 256], [256, 256], [256, 256], [256, 256], \
+        if not cfg:
+            cfg = [[64, 64], [64, 64], [64, 64], [64, 64],
+                   [64, 128], [128, 128], [128, 128], [128, 128],
+                   [128, 256], [256, 256], [256, 256], [256, 256],
                    [256, 512], [512, 512], [512, 512], [512, 512]]
-        elif cfg == 'prune':
-            cfg = [[64, 32], [32, 64], [64, 41], [41, 64], [64, 85], [85, 128], [128, 72], [72, 128], [128, 136], [136, 256], [256, 70], [70, 256], [256, 100], [100, 512], [512, 232], [232, 512]]
-            # with open('./cfg.txt', "r") as f:
-            #     cfg = f.readlines()
-            #     cfg = ''.join(cfg)
+        else:
+            with open(cfg, "r") as f:
+                cfg_ls = f.readlines()[0][:-1].split(",")
+                cfg_ls = [int(x) for x in cfg_ls]
+            # cfg = [[64, 32], [32, 64], [64, 41], [41, 64],
+            #        [64, 85], [85, 128], [128, 72], [72, 128],
+            #        [128, 136], [136, 256], [256, 70], [70, 256],
+            #        [256, 100], [100, 512], [512, 232], [232, 512]]
+
+            cfg = [[64, cfg_ls[0]], [cfg_ls[0], 64], [64, cfg_ls[1]], [cfg_ls[1], 64],
+                   [64, cfg_ls[2]], [cfg_ls[2], 128], [128, cfg_ls[3]], [cfg_ls[3], 128],
+                   [128, cfg_ls[4]], [cfg_ls[4], 256], [256, cfg_ls[5]], [cfg_ls[5], 256],
+                   [256, cfg_ls[6]], [cfg_ls[6], 512], [512, cfg_ls[7]], [cfg_ls[7], 512]]
+
         if norm_layer is None:
             norm_layer = nn.BatchNorm2d
         self._norm_layer = norm_layer
