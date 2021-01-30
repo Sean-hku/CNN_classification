@@ -6,7 +6,7 @@ $ pip install -r requirements.txt
 ````
 
 ## Quick demo:
-you should add the `model path` and `img path` in the `src/config` and the run:
+you should add the `model path` and `img path` in the `src/config` and then run:
 ```bash
 python test_model.py 
 ```
